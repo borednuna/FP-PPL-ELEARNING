@@ -25,8 +25,10 @@ CREATE TABLE `class` (
   `class_name` varchar(255) NOT NULL,
   `date_created` datetime NOT NULL,
   `class_description` text NOT NULL,
+  `mentor_id` int(11) NOT NULL,
   `quota` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`mentor_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE `class_user` (
