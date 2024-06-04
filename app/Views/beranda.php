@@ -241,7 +241,7 @@
                     </span>
                 </li>
                 <li class="nav-item1 text-center">
-                    <a class="nav-link active" aria-current="page" href="<?= base_url('./login') ?>">Keluar</a>
+                    <a class="nav-link active" aria-current="page" href="<?php echo site_url('auth/logout'); ?>">Keluar</a>
                 </li>
             </ul>
         </div>
@@ -261,7 +261,7 @@
             <div class="user-info">
                 <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>
-                    <div class="user-name">Melanie Refman</div>
+                    <div class="user-name"><?php echo session()->get('username'); ?></div>
                     <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
                 </span>
             </div>
