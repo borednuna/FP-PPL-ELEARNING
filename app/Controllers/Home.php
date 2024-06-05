@@ -10,18 +10,10 @@ class Home extends BaseController
     {
         $isLoggedIn = $this->session->get('logged_in');
 
-        $userData = [];
         if ($isLoggedIn) {
-            $userId = $this->session->get('user_id');
-            $userModel = new UserModel();
-            $userData = $userModel->find($userId);
+            return view(('beranda'));
         }
-
-        $data = [
-            'isLoggedIn' => $isLoggedIn,
-            'userData' => $userData,
-        ];
-
-        return view('home', $data);
+        
+        return view('home');
     }
 }
