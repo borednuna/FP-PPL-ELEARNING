@@ -14,6 +14,6 @@ class Home extends BaseController
             return view(('beranda'));
         }
         
-        return view('home');
+        return view('mentor_assignment_details');
     }
 }
