@@ -140,4 +140,26 @@ class AssignmentController extends BaseController
         $this->assignmentSubmissionModel->deleteSubmission($id);
         return redirect()->to('assignments/details/' . $id);
     }
+
+    public function allSubmissions($id)
+    {
+        $submissions = $this->assignmentSubmissionModel->getSubmissionByAssignment($id);
+
+        $data = [
+            'submissions' => $submissions
+        ];
+
+        return view('mentor_view_submissions', $data);
+    }
+
+    public function updateGrade()
+    {
+        $submissionId = $this->request->getPost('submission_id');
+        $grade = $this->request->getPost('grade');
+
+        error_log(print_r($this->request->getPost(), true));
+
+        $this->assignmentSubmissionModel->updateGrade($submissionId, $grade);
+        return redirect()->to('assignments/submissions/' . $submissionId);
+    }
 }

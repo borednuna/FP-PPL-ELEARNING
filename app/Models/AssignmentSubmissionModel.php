@@ -29,6 +29,12 @@ class AssignmentSubmissionModel extends Model
         return $this->db->table($this->table)->update($data, ['id' => $id]);
     }
 
+    public function updateGrade($submission_id, $grade) {
+        $this->db->table($this->table)
+                 ->where('id', $submission_id)
+                 ->update(['grade' => $grade]);
+    }
+
     public function deleteSubmission($id)
     {
         return $this->db->table($this->table)->delete(['id' => $id]);
@@ -41,7 +47,14 @@ class AssignmentSubmissionModel extends Model
 
     public function getSubmissionByAssignment($assignment_id)
     {
-        return $this->where(['assignment_id' => $assignment_id])->findAll();
+        $sql = "SELECT * FROM submission 
+        JOIN user ON submission.user_id = user.id 
+        WHERE submission.assignment_id = ?";
+
+        $query = $this->db->query($sql, [$assignment_id]);
+        $results = $query->getResultArray();
+
+        return $results;
     }
 
     public function getSubmissionByUser($user_id)

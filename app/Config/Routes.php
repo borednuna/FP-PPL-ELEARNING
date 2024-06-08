@@ -19,3 +19,5 @@ $routes->put('assignments/update/(:num)', 'AssignmentController::update/$1');
 $routes->delete('assignments/delete/(:num)', 'AssignmentController::delete/$1');
 $routes->post('assignments/submit/(:num)', 'AssignmentController::submit/$1');
 $routes->delete('assignments/submit/delete/(:num)', 'AssignmentController::deleteSubmission/$1');
+$routes->get('assignments/submissions/(:num)', 'AssignmentController::allSubmissions/$1');
+$routes->post('assignments/update_grade', 'AssignmentController::updateGrade');
