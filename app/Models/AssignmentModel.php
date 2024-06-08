@@ -8,7 +8,7 @@ class AssignmentModel extends Model
 {
     protected $table = 'assignment';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'description', 'material_id', 'deadline', 'grade'];
+    protected $allowedFields = ['name', 'description', 'material_id', 'deadline'];
 
     public function getAssignment($id = false)
     {

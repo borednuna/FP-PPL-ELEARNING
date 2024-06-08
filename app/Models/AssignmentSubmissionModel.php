@@ -8,7 +8,7 @@ class AssignmentSubmissionModel extends Model
 {
     protected $table = 'submission';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['assignment_id', 'user_id', 'material_id', 'uploaded_file', 'date_submitted'];
+    protected $allowedFields = ['assignment_id', 'user_id', 'material_id', 'uploaded_file', 'grade'];
 
     public function getSubmission($id = false)
     {

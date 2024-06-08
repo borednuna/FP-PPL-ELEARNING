@@ -28,14 +28,13 @@ class AssignmentController extends BaseController
 
     public function detail($id)
     {
-        $data = [
-            'title' => 'Assignment Detail',
-            'assignment' => $this->assignmentModel->getAssignment($id),
-            'submission' => $this->assignmentSubmissionModel->getSubmissionByAssignment($id)
-        ];
+        $assignment = $this->assignmentModel->getAssignment($id);
+
+        $data = ['assignment' => $assignment];
 
         return view('mentor_assignment_details', $data);
     }
+
 
     public function create()
     {
@@ -66,45 +65,32 @@ class AssignmentController extends BaseController
         return redirect()->to('mentor_assignment_details' . $data)->withInput();
     }
 
-    public function edit($id)
-    {
-        $data = [
-            'title' => 'Edit Assignment',
-            'validation' => \Config\Services::validation(),
-            'assignment' => $this->assignmentModel->getAssignment($id)
-        ];
-
-        return view('mentor_assignment_details', $data);
-    }
-
     public function update($id)
     {
         if (!$this->validate([
             'name' => 'required',
             'description' => 'required',
-            'material_id' => 'required',
             'deadline' => 'required',
-            'grade' => 'required'
         ])) {
-            return redirect()->to('mentor_assignment_details' . $id)->withInput();
+            return redirect()->to("/assignments/details/{$id}");
         }
 
+        $assignment = $this->assignmentModel->getAssignment($id);
         $data = [
             'name' => $this->request->getPost('name'),
             'description' => $this->request->getPost('description'),
-            'material_id' => $this->request->getPost('material_id'),
+            'material_id' => $assignment['material_id'],
             'deadline' => $this->request->getPost('deadline'),
-            'grade' => $this->request->getPost('grade')
         ];
 
         $this->assignmentModel->updateAssignment($data, $id);
-        return redirect()->to('mentor_assignment_details' . $data)->withInput();
+        return redirect()->to("/assignments/details/{$id}");
     }
 
     public function delete($id)
     {
         $this->assignmentModel->deleteAssignment($id);
-        return redirect()->to('/assignment'); // cek kelas
+        return redirect()->to('/');
     }
 
     public function submission($id)

@@ -44,21 +44,21 @@ INSERT INTO `assignment` (`name`, `description`, `material_id`, `deadline`) VALU
 INSERT INTO `assignment` (`name`, `description`, `material_id`, `deadline`) VALUES ('Pandas Assignment', 'Create a simple data analysis using Pandas', 11, '2021-01-10 00:00:00');
 INSERT INTO `assignment` (`name`, `description`, `material_id`, `deadline`) VALUES ('Numpy Assignment', 'Create a simple data analysis using Numpy', 12, '2021-01-10 00:00:00');
 
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (1, 3, 'This is my HTML assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (2, 3, 'This is my CSS assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (3, 3, 'This is my JavaScript assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (4, 3, 'This is my React assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (5, 3, 'This is my Angular assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (6, 3, 'This is my Vue assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (7, 3, 'This is my Flutter assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (8, 3, 'This is my Dart assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (9, 3, 'This is my Firebase assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (10, 3, 'This is my Python assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (11, 3, 'This is my Pandas assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (12, 3, 'This is my Numpy assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (1, 4, 'This is my HTML assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (2, 4, 'This is my CSS assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
-INSERT INTO `submission` (`assignment_id`, `user_id`, `submission_description`, `uploaded_file`, `date_submitted`) VALUES (3, 4, 'This is my JavaScript assignment', 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (1, 3, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (2, 3, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (3, 3, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (4, 3, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (5, 3, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (6, 3, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (7, 3, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (8, 3, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (9, 3, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (10, 3, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (11, 3, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (12, 3, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (1, 4, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (2, 4, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
+INSERT INTO `submission` (`assignment_id`, `user_id`, `uploaded_file`, `date_submitted`) VALUES (3, 4, 'https://www.youtube.com/watch?v=UB1O30fR-EE', '2021-01-10 00:00:00');
 
 INSERT INTO `exam` (`name`, `class_id`, `date_created`, `start_time`, `end_time`) VALUES ('HTML Exam', 1, '2021-01-01 00:00:00', '2021-01-10 00:00:00', '2021-01-10 01:00:00');
 INSERT INTO `exam` (`name`, `class_id`, `date_created`, `start_time`, `end_time`) VALUES ('CSS Exam', 1, '2021-01-01 00:00:00', '2021-01-10 00:00:00', '2021-01-10 01:00:00');

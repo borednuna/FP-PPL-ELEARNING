@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E-Learning App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <!-- Link to Inter font from Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-
     <style>
         body {
             margin: 0;
@@ -138,56 +136,54 @@
 </head>
 
 <body>
-    <header>
-        <div class="sidebar">
-            <div style="padding-bottom: 40px; text-align: center; color: white;">
-                <a class="sidebar-brand" href="#">
-                    <img src="./assets/book.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                    E-learningApp
-                </a>
-            </div>
-            <ul class="sidebar-nav">
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/beranda.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
-                    </span>
-                </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./kelas') ?>">Kelas</a>
-                    </span>
-                </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal') ?>">Jadwal</a>
-                    </span>
-                </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/nilai.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./nilai') ?>">Nilai</a>
-                    </span>
-                </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
-                    </span>
-                </li>
-            </ul>
-            <ul class="nav-item1">
-                <a href="<?= base_url('logout') ?>">
-                    Keluar
-                </a>
-            </ul>
+    <nav class="sidebar">
+        <div style="padding-bottom: 40px; text-align: center; color: white;">
+            <a class="sidebar-brand" href="#">
+                <img src="./assets/book.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                E-learningApp
+            </a>
         </div>
-    </header>
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/beranda.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
+                </span>
+            </li>
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./kelas') ?>">Kelas</a>
+                </span>
+            </li>
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal') ?>">Jadwal</a>
+                </span>
+            </li>
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/nilai.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./nilai') ?>">Nilai</a>
+                </span>
+            </li>
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
+                </span>
+            </li>
+        </ul>
+        <ul class="nav-item1">
+            <a href="<?= base_url('logout') ?>">
+                Keluar
+            </a>
+        </ul>
+    </nav>
 
     <div class="container" style="margin-left: 270px;">
-        <div class="d-flex justify-content-between align-items-center">
+        <header class="d-flex justify-content-between align-items-center">
             <div class="container mt-4" style="width: 81%;">
                 <form class="form-inline">
                     <div class="d-flex justify-content-between align-items-center">
@@ -204,34 +200,42 @@
                     <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
                 </span>
             </div>
-        </div>
+        </header>
 
-        <?php echo form_open('assignments/update', ['method' => 'post']); ?>
-            <div class="assignment-card">
-                <h1>Assignment Details</h1>
-                
-                <h2>Assignment Name</h2>
-                <input type="text" class="form-control" name="assignment_name" value="Weekly Assignment I" required><br>
+        <?php if (isset($assignment)): ?>
+            <?php foreach ([$assignment] as $assignmentItem): ?>
+                <form action="<?= base_url('assignments/update/' . $assignmentItem['id']) ?>" method="post">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="_method" value="PUT">
+                    <div class="assignment-card">
+                        <h1>Assignment Details</h1>
 
-                <h2>Description</h2>
-                <textarea class="form-control" name="description" placeholder="Description" required>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum pulvinar etiam non quam lacus suspendisse. Sapien et ligula ullamcorper malesuada proin libero. Quisque egestas diam in arcu cursus euismod quis viverra.</textarea>
+                        <h2>Assignment Name</h2>
+                        <input type="text" class="form-control" name="name" value="<?= $assignmentItem['name'] ?>" required><br>
 
-                <h2>Deadline</h2>
-                <input type="text" class="form-control" name="deadline" value="2021-01-10 00:00:00" required><br>
+                        <h2>Description</h2>
+                        <textarea class="form-control" name="description" placeholder="Description" required><?= $assignmentItem['description'] ?></textarea>
 
-                <button type="submit" class="custom-button" style="background-color: #32CA4D; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#7DD38C'" onmouseout="this.style.backgroundColor='#32CA4D'">Update</button>
-                <button type="button" style="background-color: #F80202; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#F15757'" onmouseout="this.style.backgroundColor='#F80202'" class="custom-button" onclick="deleteSubmission()">
+                        <h2>Deadline</h2>
+                        <input type="text" class="form-control" name="deadline" value="<?= $assignmentItem['deadline'] ?>" required><br>
+
+                        <button type="submit" class="custom-button" style="background-color: #32CA4D; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#7DD38C'" onmouseout="this.style.backgroundColor='#32CA4D'">Update</button>
+                    </div>
+                </form>
+
+                <form action="<?= base_url('assignments/delete/' . $assignmentItem['id']) ?>" method="post" style="display: none;" id="deleteForm">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="_method" value="DELETE">
+                </form>
+                <button type="button" style="margin-top: 0px; width: 85%; background-color: #F80202; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#F15757'" onmouseout="this.style.backgroundColor='#F80202'" class="custom-button" onclick="deleteSubmission()">
                     Delete Submission
                 </button>
-            </div>
-        <?php echo form_close(); ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Assignment not found or invalid data.</p>
+        <?php endif; ?>
     </div>
 
-    <form id="deleteForm" action="<?= base_url('assignments/delete') ?>" method="post" style="display: none;">
-        <input type="hidden" name="assignment_id" value="1">
-    </form>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script>
         function deleteSubmission() {
             if (confirm("Are you sure you want to delete this submission?")) {
@@ -242,5 +246,4 @@
         }
     </script>
 </body>
-
 </html>
