@@ -67,7 +67,6 @@ CREATE TABLE `submission` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `assignment_id` int(11),
   `user_id` int(11),
-  `submission_description` text NOT NULL,
   `uploaded_file` text NOT NULL,
   `date_submitted` datetime NOT NULL,
   PRIMARY KEY (`id`),

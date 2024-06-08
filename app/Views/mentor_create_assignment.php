@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E-Learning App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
     <!-- Link to Inter font from Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 
@@ -17,6 +18,7 @@
             overflow: hidden;
         }
 
+        /* Sidebar styling */
         .sidebar {
             height: 100vh;
             width: 250px;
@@ -25,7 +27,10 @@
             left: 0;
             background-color: #4829B2;
             color: #fff;
-            padding: 20px;
+            padding-top: 40px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            padding-left: 20px;
         }
 
         .sidebar-brand {
@@ -36,7 +41,7 @@
 
         .sidebar-nav {
             list-style: none;
-            padding-left: 0;
+            padding-left: 20px;
         }
 
         .sidebar-nav .nav-item {
@@ -44,11 +49,11 @@
         }
 
         .sidebar-nav .nav-item a {
-            color: #fff;
-            text-decoration: none;
+            font-family: 'Inter', sans-serif;
         }
 
         .nav-item1 {
+            list-style: none;
             padding-top: 360px;
         }
 
@@ -70,7 +75,9 @@
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            padding: 30px 30px 0 0;
+            padding: 30px;
+            padding-bottom: 0px;
+
         }
 
         .user-info img {
@@ -83,6 +90,125 @@
 
         .user-info .user-name {
             color: black;
+        }
+
+        .container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            /* Center the image */
+        }
+
+        .desktop-1-Mss {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .auto-group-39fb-PpZ {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .vector-zxm {
+            width: 50px;
+            height: auto;
+        }
+
+        .navbar-43-WRK {
+            display: flex;
+            align-items: center;
+        }
+
+        .auto-group-zq2d-y41 {
+            display: flex;
+            align-items: center;
+        }
+
+        .frame-63-hVo {
+            display: flex;
+            align-items: center;
+        }
+
+        .frame-64-3Zf {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .raphael-books-XNM {
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .media-ilmu-pcM,
+        .catalog-JGd,
+        .delivery-R6M,
+        .delivery-LUD {
+            margin: 0;
+            padding: 0;
+            margin-right: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .frame-65-5Au {
+            display: flex;
+            align-items: center;
+        }
+
+        .ellipse-1-Nvh {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin-right: 10px;
+        }
+
+        .delivery-1Ts {
+            margin: 0;
+            padding: 0;
+            margin-right: 10px;
+            color: #fff;
+        }
+
+        .iconamoon-arrow-up-2-light-jem {
+            width: 20px;
+            height: auto;
+        }
+
+        .navbar-nav .nav-link {
+            outline: none;
+        }
+
+        .navbar-nav .nav-item.active a {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card img {
+            flex-grow: 1;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .card-body p.card-text {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            color: #ffffff;
+            background-color: #32CA4D;
+            /* Set text color to white */
         }
 
         .assignment-card {
@@ -114,6 +240,21 @@
             width: 100%;
             height: 150px;
             resize: both;
+        }
+
+        .submit-button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: #218838;
         }
 
         .custom-button {
@@ -206,41 +347,24 @@
             </div>
         </div>
 
-        <?php echo form_open('assignments/update', ['method' => 'post']); ?>
-            <div class="assignment-card">
-                <h1>Assignment Details</h1>
-                
-                <h2>Assignment Name</h2>
-                <input type="text" class="form-control" name="assignment_name" value="Weekly Assignment I" required><br>
+        <div class="assignment-card">
+            <h1>Create Assignment</h1>
+            <?php echo form_open('auth/register', 'method="post"'); ?>
+                <label for="username">Assignment Name</label>
+                <input type="text" class="form-control" name="username" required><br>
 
-                <h2>Description</h2>
-                <textarea class="form-control" name="description" placeholder="Description" required>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum pulvinar etiam non quam lacus suspendisse. Sapien et ligula ullamcorper malesuada proin libero. Quisque egestas diam in arcu cursus euismod quis viverra.</textarea>
+                <label for="password">Description</label>
+                <textarea class="form-control" placeholder="Description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum pulvinar etiam non quam lacus suspendisse. Sapien et ligula ullamcorper malesuada proin libero. Quisque egestas diam in arcu cursus euismod quis viverra.</textarea>
 
-                <h2>Deadline</h2>
-                <input type="text" class="form-control" name="deadline" value="2021-01-10 00:00:00" required><br>
+                <label for="deadline">Deadline</label>
+                <input type="text" class="form-control" name="deadline" required><br>
+                <button type="button" class="custom-button">Create Assignment</button>
+            <?php echo form_close(); ?>
+        </div>
 
-                <button type="submit" class="custom-button" style="background-color: #32CA4D; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#7DD38C'" onmouseout="this.style.backgroundColor='#32CA4D'">Update</button>
-                <button type="button" style="background-color: #F80202; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#F15757'" onmouseout="this.style.backgroundColor='#F80202'" class="custom-button" onclick="deleteSubmission()">
-                    Delete Submission
-                </button>
-            </div>
-        <?php echo form_close(); ?>
     </div>
 
-    <form id="deleteForm" action="<?= base_url('assignments/delete') ?>" method="post" style="display: none;">
-        <input type="hidden" name="assignment_id" value="1">
-    </form>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <script>
-        function deleteSubmission() {
-            if (confirm("Are you sure you want to delete this submission?")) {
-                document.getElementById('deleteForm').submit();
-            } else {
-                alert("Submission deletion canceled.");
-            }
-        }
-    </script>
 </body>
 
 </html>
