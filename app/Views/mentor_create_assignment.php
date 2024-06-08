@@ -349,16 +349,16 @@
 
         <div class="assignment-card">
             <h1>Create Assignment</h1>
-            <?php echo form_open('auth/register', 'method="post"'); ?>
-                <label for="username">Assignment Name</label>
-                <input type="text" class="form-control" name="username" required><br>
+            <?php echo form_open('assignments/create', 'method="post"'); ?>
+                <label for="name">Assignment Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Name" required><br>
 
-                <label for="password">Description</label>
-                <textarea class="form-control" placeholder="Description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum pulvinar etiam non quam lacus suspendisse. Sapien et ligula ullamcorper malesuada proin libero. Quisque egestas diam in arcu cursus euismod quis viverra.</textarea>
+                <label for="description">Description</label>
+                <textarea class="form-control" name="description" placeholder="Description" required></textarea>
 
                 <label for="deadline">Deadline</label>
                 <input type="text" class="form-control" name="deadline" required><br>
-                <button type="button" class="custom-button">Create Assignment</button>
+                <button type="submit" class="custom-button">Create Assignment</button>
             <?php echo form_close(); ?>
         </div>
 

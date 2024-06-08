@@ -46,23 +46,20 @@ class AssignmentController extends BaseController
         if (!$this->validate([
             'name' => 'required',
             'description' => 'required',
-            'material_id' => 'required',
             'deadline' => 'required',
-            'grade' => 'required'
         ])) {
-            return redirect()->to('mentor_create_assignment')->withInput();
+            return redirect()->to('assignments/create')->withInput();
         }
 
         $data = [
             'name' => $this->request->getPost('name'),
             'description' => $this->request->getPost('description'),
-            'material_id' => $this->request->getPost('material_id'),
-            'deadline' => $this->request->getPost('deadline'),
-            'grade' => $this->request->getPost('grade')
+            'material_id' => 1,
+            'deadline' => $this->request->getPost('deadline')
         ];
 
         $this->assignmentModel->insertAssignment($data);
-        return redirect()->to('mentor_assignment_details' . $data)->withInput();
+        return redirect()->to("/");
     }
 
     public function update($id)
