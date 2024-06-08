@@ -58,7 +58,6 @@ CREATE TABLE `assignment` (
   `description` text NOT NULL,
   `material_id` int(11) NOT NULL,
   `deadline` datetime NOT NULL,
-  `grade` int(11),
   PRIMARY KEY (`id`),
   FOREIGN KEY (`material_id`) REFERENCES `material`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -67,7 +66,7 @@ CREATE TABLE `submission` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `assignment_id` int(11),
   `user_id` int(11),
-  `submission_description` text NOT NULL,
+  `grade` int(11),
   `uploaded_file` text NOT NULL,
   `date_submitted` datetime NOT NULL,
   PRIMARY KEY (`id`),

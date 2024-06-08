@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\UserModel;
-
 class Home extends BaseController
 {
     public function index()
@@ -14,6 +12,6 @@ class Home extends BaseController
             return view(('beranda'));
         }
         
-        return view('home');
+        return view('mentor_view_submissions');
     }
 }
