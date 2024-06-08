@@ -15,7 +15,7 @@
             margin: 0;
             padding-top: 20px;
             font-family: Inter, sans-serif;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* Sidebar styling */
@@ -236,6 +236,13 @@
             color: #333;
         }
 
+        h3 {
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+
         textarea.form-control {
             width: 100%;
             height: 150px;
@@ -349,33 +356,40 @@
 
         <div class="assignment-card">
             <h1>Assignment Details</h1>
-            <h2>Weekly Assignment I</h2>
-            <textarea class="form-control" placeholder="Description" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum pulvinar etiam non quam lacus suspendisse. Sapien et ligula ullamcorper malesuada proin libero. Quisque egestas diam in arcu cursus euismod quis viverra.</textarea>
-            <h2>Weekly Assignment I</h2>
-            <input type="text" class="form-control" placeholder="Description" value="2021-01-10 00:00:00" readonly>
-            <h2>Submission</h2>
-            <form enctype="multipart/form-data">
-                <label for="file-upload">Choose the work you want to upload:</label>
-                <input type="file" id="file-upload" name="file">
-                <br><br>
-                <button type="button" class="custom-button">Make submission</button>
-            </form>
-            <button style="background-color: #F80202; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#F15757'" onmouseout="this.style.backgroundColor='#F80202'" class="custom-button" onclick="deleteSubmission()">Delete submission</button>
+            <?php if ($assignment): ?>
+                <h2><?php echo $assignment['name']; ?></h2>
+                <textarea class="form-control" placeholder="Description" readonly><?php echo $assignment['description']; ?></textarea>
+                <h2>Deadline</h2>
+                <input type="text" class="form-control" placeholder="Deadline" value="<?php echo $assignment['deadline']; ?>" readonly>
+                <h2>Grade</h2>
+                <input type="text" class="form-control" placeholder="Not yet graded" value="<?php echo $submission['grade']; ?>" readonly>
+                <h2>Submission</h2>
+                <form action="<?= base_url('assignments/submit/' . $assignment['id']) ?>" enctype="multipart/form-data" method="POST">
+                    <input type="hidden" name="assignment_id" value="<?php echo $assignment['id']; ?>">
+                    <h3>Uploaded file :</h3>
+                    <input type="text" style="width: 50%" name="file" placeholder="Not yet uploaded submission" value="<?php echo $submission['uploaded_file']; ?>" readonly><br><br>
+                    <label for="file-upload">Choose the work you want to upload:</label>
+                    <input type="file" id="file-upload" name="uploaded_file">
+                    <br><br>
+                    <?php if ($submission['uploaded_file'] == null): ?>
+                        <button type="submit" class="custom-button">Make submission</button>
+                    <?php else: ?>
+                        <button type="submit" style="width: 100%" disabled>Make submission</button>
+                    <?php endif; ?>
+                </form>
+                <?php if ($submission['uploaded_file'] != null): ?>
+                    <form id="deleteForm" action="<?= base_url('assignments/submit/delete/' . $submission['id']) ?>" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" style="background-color: #F80202; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#F15757'" onmouseout="this.style.backgroundColor='#F80202'" class="custom-button">Delete submission</button>
+                    </form>
+                <?php endif; ?>
+            <?php else: ?>
+                <p>No assignment found.</p>
+            <?php endif; ?>
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <script>
-        function deleteSubmission() {
-            if (confirm("Are you sure you want to delete this submission?")) {
-                alert("Submission deleted.");
-                // Add your custom functionality here to delete the submission
-            } else {
-                alert("Submission deletion canceled.");
-            }
-        }
-    </script>
 </body>
 
 </html>

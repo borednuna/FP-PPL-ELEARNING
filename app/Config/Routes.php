@@ -17,3 +17,5 @@ $routes->get('assignments/create', 'AssignmentController::create');
 $routes->post('assignments/create', 'AssignmentController::save');
 $routes->put('assignments/update/(:num)', 'AssignmentController::update/$1');
 $routes->delete('assignments/delete/(:num)', 'AssignmentController::delete/$1');
+$routes->post('assignments/submit/(:num)', 'AssignmentController::submit/$1');
+$routes->delete('assignments/submit/delete/(:num)', 'AssignmentController::deleteSubmission/$1');

@@ -34,6 +34,11 @@ class AssignmentSubmissionModel extends Model
         return $this->db->table($this->table)->delete(['id' => $id]);
     }
 
+    public function getSubmissionByAssignmentAndUser($assignment_id, $user_id)
+    {
+        return $this->where(['assignment_id' => $assignment_id, 'user_id' => $user_id])->first();
+    }
+
     public function getSubmissionByAssignment($assignment_id)
     {
         return $this->where(['assignment_id' => $assignment_id])->findAll();

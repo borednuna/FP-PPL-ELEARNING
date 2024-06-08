@@ -30,11 +30,31 @@ class AssignmentController extends BaseController
     {
         $assignment = $this->assignmentModel->getAssignment($id);
 
-        $data = ['assignment' => $assignment];
+        $userRole = $this->session->get('role');
+        if ($userRole == 'mentor') {
+            $viewName = 'mentor_assignment_details';
+            $data = ['assignment' => $assignment];
+        } else if ($userRole == 'student'){
+            $viewName = 'student_assignment_details';
+            $submission = $this->assignmentSubmissionModel->getSubmissionByAssignmentAndUser($id, session()->get('id'));
+            if (!$submission) {
+                $submission = [
+                    'assignment_id' => null,
+                    'user_id' => null,
+                    'uploaded_file' => null,
+                    'date_submitted' => null,
+                    'grade' => null
+                ];
+            }
 
-        return view('mentor_assignment_details', $data);
+            $data = [
+                'assignment' => $assignment,
+                'submission' => $submission
+            ];
+        }
+
+        return view($viewName, $data);
     }
-
 
     public function create()
     {
@@ -90,21 +110,10 @@ class AssignmentController extends BaseController
         return redirect()->to('/');
     }
 
-    public function submission($id)
-    {
-        $data = [
-            'title' => 'Assignment Submission',
-            'assignment' => $this->assignmentModel->getAssignment($id),
-            'submission' => $this->assignmentSubmissionModel->getSubmissionByAssignment($id)
-        ];
-
-        return view('student_assignment_details', $data);
-    }
-
     public function submit($id)
     {
         if (!$this->validate([
-            'uploaded_file' => 'uploaded[uploaded_file]|max_size[uploaded_file,1024]|ext_in[uploaded_file,pdf]'
+            'uploaded_file' => 'uploaded[uploaded_file]|max_size[uploaded_file,1024]'
         ])) {
             return redirect()->to('student_assignment_details' . $id)->withInput();
         }
@@ -116,13 +125,12 @@ class AssignmentController extends BaseController
         $data = [
             'assignment_id' => $id,
             'user_id' => session()->get('id'),
-            'material_id' => $this->assignmentModel->getAssignment($id)['material_id'],
             'uploaded_file' => $fileName,
             'date_submitted' => date('Y-m-d H:i:s')
         ];
 
         $this->assignmentSubmissionModel->insertSubmission($data);
-        return redirect()->to('student_assignment_details' . $data)->withInput();
+        return redirect()->to('assignments/details/' . $id)->withInput();
     }
 
     public function deleteSubmission($id)
@@ -130,30 +138,6 @@ class AssignmentController extends BaseController
         $submission = $this->assignmentSubmissionModel->getSubmission($id);
         unlink('uploads/' . $submission['uploaded_file']);
         $this->assignmentSubmissionModel->deleteSubmission($id);
-        return redirect()->to('/assignment/submission/' . $submission['assignment_id']); // cek kelas
-    }
-
-    public function updateSubmission($id)
-    {
-        if (!$this->validate([
-            'uploaded_file' => 'uploaded[uploaded_file]|max_size[uploaded_file,1024]|ext_in[uploaded_file,pdf]'
-        ])) {
-            return redirect()->to('student_assignment_details' . $id)->withInput();
-        }
-
-        $submission = $this->assignmentSubmissionModel->getSubmission($id);
-        unlink('uploads/' . $submission['uploaded_file']);
-
-        $file = $this->request->getFile('uploaded_file');
-        $fileName = $file->getRandomName();
-        $file->move('uploads', $fileName);
-
-        $data = [
-            'uploaded_file' => $fileName,
-            'date_submitted' => date('Y-m-d H:i:s')
-        ];
-
-        $this->assignmentSubmissionModel->updateSubmission($data, $id);
-        return redirect()->to('student_assignment_details' . $submission['assignment_id']);
+        return redirect()->to('assignments/details/' . $id);
     }
 }
