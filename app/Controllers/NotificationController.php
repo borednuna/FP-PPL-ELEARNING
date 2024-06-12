@@ -12,6 +12,20 @@ class NotificationController extends Controller
         $notificationModel = new Notification();
         $notifications = $notificationModel->findAll();
 
-        return view('notifikasi', ['notifications' => $notifications]);
+        return view('mentor_notifications', [
+            'notifications' => $notifications,
+            'pageTitle' => 'Mentor Notifications'
+        ]);
+    }
+
+    public function readNotifications()
+    {
+        $notificationModel = new Notification();
+        $notifications = $notificationModel->findAll();
+
+        return view('student_notifications', [
+            'notifications' => $notifications,
+            'pageTitle' => 'Student Notifications'
+        ]);
     }
 }
