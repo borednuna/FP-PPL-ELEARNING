@@ -325,12 +325,6 @@
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
                     </span>
                 </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./notifications') ?>">Notifikasi</a>
-                    </span>
-                </li>
             </ul>
             <ul class="nav-item1">
                 <a href="<?= base_url('logout') ?>">
@@ -362,7 +356,7 @@
 
         <div class="assignment-card">
             <h1>Assignment Details</h1>
-            <?php if ($assignment) : ?>
+            <?php if ($assignment): ?>
                 <h2><?php echo $assignment['name']; ?></h2>
                 <textarea class="form-control" placeholder="Description" readonly><?php echo $assignment['description']; ?></textarea>
                 <h2>Deadline</h2>
@@ -377,19 +371,19 @@
                     <label for="file-upload">Choose the work you want to upload:</label>
                     <input type="file" id="file-upload" name="uploaded_file">
                     <br><br>
-                    <?php if ($submission['uploaded_file'] == null) : ?>
+                    <?php if ($submission['uploaded_file'] == null): ?>
                         <button type="submit" class="custom-button">Make submission</button>
-                    <?php else : ?>
+                    <?php else: ?>
                         <button type="submit" style="width: 100%" disabled>Make submission</button>
                     <?php endif; ?>
                 </form>
-                <?php if ($submission['uploaded_file'] != null) : ?>
+                <?php if ($submission['uploaded_file'] != null): ?>
                     <form id="deleteForm" action="<?= base_url('assignments/submit/delete/' . $submission['id']) ?>" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" style="background-color: #F80202; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#F15757'" onmouseout="this.style.backgroundColor='#F80202'" class="custom-button">Delete submission</button>
                     </form>
                 <?php endif; ?>
-            <?php else : ?>
+            <?php else: ?>
                 <p>No assignment found.</p>
             <?php endif; ?>
         </div>

@@ -11,7 +11,7 @@ class Home extends BaseController
         if ($isLoggedIn) {
             return view(('beranda'));
         }
-
-        return view('login');
+        
+        return view('beranda');
     }
 }
