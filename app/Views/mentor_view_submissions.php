@@ -205,12 +205,6 @@
                     <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
                 </span>
             </li>
-            <li class="nav-item">
-                <span style="display: flex; align-items: center; padding-left: 20px;">
-                    <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./notifikasi') ?>">Notifikasi</a>
-                </span>
-            </li>
         </ul>
         <ul class="nav-item1">
             <a href="<?= base_url('logout') ?>">
@@ -254,20 +248,20 @@
                     </thead>
                     <tbody>
                         <?php foreach ($submissions as $submission) : ?>
-                            <tr>
-                                <td><?= $submission['username'] ?></td>
-                                <td><?= $submission['date_submitted'] ?></td>
-                                <td>
-                                    <form action="<?= base_url('assignments/update_grade') ?>" method="post" class="d-inline">
-                                        <input type="hidden" name="submission_id" value="<?= esc($submission['id']) ?>">
-                                        <input type="number" placeholder="Nilai belum diberikan" name="grade" value="<?= $submission['grade'] ?>" class="form-control d-inline w-auto">
-                                        <button type="submit" class="btn btn-success btn-sm">Update</button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <a href="<?= base_url('uploads/' . $submission['uploaded_file']) ?>" class="btn btn-danger btn-sm" download>Unduh file</a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td><?= $submission['username'] ?></td>
+                            <td><?= $submission['date_submitted'] ?></td>
+                            <td>
+                                <form action="<?= base_url('assignments/update_grade') ?>" method="post" class="d-inline">
+                                    <input type="hidden" name="submission_id" value="<?= esc($submission['id']) ?>">
+                                    <input type="number" placeholder="Nilai belum diberikan" name="grade" value="<?= $submission['grade'] ?>" class="form-control d-inline w-auto">
+                                    <button type="submit" class="btn btn-success btn-sm">Update</button>
+                                </form>
+                            </td>
+                            <td>
+                            <a href="<?= base_url('uploads/' . $submission['uploaded_file']) ?>" class="btn btn-danger btn-sm" download>Unduh file</a>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
@@ -275,5 +269,4 @@
         </div>
     </div>
 </body>
-
 </html>
