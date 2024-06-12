@@ -239,39 +239,18 @@
             </div>
         </header>
 
-        <!-- table -->
-        <div class="container mt-4">
-            <div class="assignment" style="margin-top: 20px;">
-                <h1>Pengumpulan Tugas</h1>
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>Siswa</th>
-                            <th>Tanggal Pengumpulan</th>
-                            <th>Nilai</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($submissions as $submission) : ?>
-                            <tr>
-                                <td><?= $submission['username'] ?></td>
-                                <td><?= $submission['date_submitted'] ?></td>
-                                <td>
-                                    <form action="<?= base_url('assignments/update_grade') ?>" method="post" class="d-inline">
-                                        <input type="hidden" name="submission_id" value="<?= esc($submission['id']) ?>">
-                                        <input type="number" placeholder="Nilai belum diberikan" name="grade" value="<?= $submission['grade'] ?>" class="form-control d-inline w-auto">
-                                        <button type="submit" class="btn btn-success btn-sm">Update</button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <a href="<?= base_url('uploads/' . $submission['uploaded_file']) ?>" class="btn btn-danger btn-sm" download>Unduh file</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+        <h1>Notifikasi</h1>
+        <div class="row row-cols-1 g-4">
+            <?php foreach ($notifications as $notification) : ?>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $notification['title'] ?></h5>
+                            <p class="card-text"><?= $notification['content'] ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </body>
