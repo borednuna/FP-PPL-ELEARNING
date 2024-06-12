@@ -22,3 +22,4 @@ $routes->delete('assignments/submit/delete/(:num)', 'AssignmentController::delet
 $routes->get('assignments/submissions/(:num)', 'AssignmentController::allSubmissions/$1');
 $routes->post('assignments/update_grade', 'AssignmentController::updateGrade');
 $routes->get('notifikasi', 'NotificationController::showNotifications');
+$routes->get('notifications', 'NotificationController::readNotifications');

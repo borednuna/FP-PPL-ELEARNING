@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E-Learning App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
-    <!-- Link to Inter font from Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-
     <style>
         body {
             margin: 0;
@@ -202,14 +199,13 @@
             width: 100%;
         }
 
-        .card-body p.card-text {
+        /* .card-body p.card-text {
             display: inline-block;
             padding: 0.5rem 1rem;
             border-radius: 0.25rem;
             color: #ffffff;
             background-color: #32CA4D;
-            /* Set text color to white */
-        }
+        } */
 
         .assignment-card {
             height: 100%;
@@ -360,42 +356,20 @@
             </div>
         </div>
 
-        <div class="assignment-card">
-            <h1>Assignment Details</h1>
-            <?php if ($assignment) : ?>
-                <h2><?php echo $assignment['name']; ?></h2>
-                <textarea class="form-control" placeholder="Description" readonly><?php echo $assignment['description']; ?></textarea>
-                <h2>Deadline</h2>
-                <input type="text" class="form-control" placeholder="Deadline" value="<?php echo $assignment['deadline']; ?>" readonly>
-                <h2>Grade</h2>
-                <input type="text" class="form-control" placeholder="Not yet graded" value="<?php echo $submission['grade']; ?>" readonly>
-                <h2>Submission</h2>
-                <form action="<?= base_url('assignments/submit/' . $assignment['id']) ?>" enctype="multipart/form-data" method="POST">
-                    <input type="hidden" name="assignment_id" value="<?php echo $assignment['id']; ?>">
-                    <h3>Uploaded file :</h3>
-                    <input type="text" style="width: 50%" name="file" placeholder="Not yet uploaded submission" value="<?php echo $submission['uploaded_file']; ?>" readonly><br><br>
-                    <label for="file-upload">Choose the work you want to upload:</label>
-                    <input type="file" id="file-upload" name="uploaded_file">
-                    <br><br>
-                    <?php if ($submission['uploaded_file'] == null) : ?>
-                        <button type="submit" class="custom-button">Make submission</button>
-                    <?php else : ?>
-                        <button type="submit" style="width: 100%" disabled>Make submission</button>
-                    <?php endif; ?>
-                </form>
-                <?php if ($submission['uploaded_file'] != null) : ?>
-                    <form id="deleteForm" action="<?= base_url('assignments/submit/delete/' . $submission['id']) ?>" method="POST">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" style="background-color: #F80202; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#F15757'" onmouseout="this.style.backgroundColor='#F80202'" class="custom-button">Delete submission</button>
-                    </form>
-                <?php endif; ?>
-            <?php else : ?>
-                <p>No assignment found.</p>
-            <?php endif; ?>
+        <h1>Notifikasi</h1>
+        <div class="row row-cols-1 g-4">
+            <?php foreach ($notifications as $notification) : ?>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $notification['title'] ?></h5>
+                            <p class="card-text"><?= $notification['content'] ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
 </html>
