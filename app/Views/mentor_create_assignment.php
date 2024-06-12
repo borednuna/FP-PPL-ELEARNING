@@ -318,6 +318,12 @@
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
                     </span>
                 </li>
+                <li class="nav-item">
+                    <span style="display: flex; align-items: center; padding-left: 20px;">
+                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./notifikasi') ?>">Notifikasi</a>
+                    </span>
+                </li>
             </ul>
             <ul class="nav-item1">
                 <a href="<?= base_url('logout') ?>">
@@ -350,15 +356,15 @@
         <div class="assignment-card">
             <h1>Create Assignment</h1>
             <?php echo form_open('assignments/create', 'method="post"'); ?>
-                <label for="name">Assignment Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Name" required><br>
+            <label for="name">Assignment Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Name" required><br>
 
-                <label for="description">Description</label>
-                <textarea class="form-control" name="description" placeholder="Description" required></textarea>
+            <label for="description">Description</label>
+            <textarea class="form-control" name="description" placeholder="Description" required></textarea>
 
-                <label for="deadline">Deadline</label>
-                <input type="text" class="form-control" name="deadline" required><br>
-                <button type="submit" class="custom-button">Create Assignment</button>
+            <label for="deadline">Deadline</label>
+            <input type="text" class="form-control" name="deadline" required><br>
+            <button type="submit" class="custom-button">Create Assignment</button>
             <?php echo form_close(); ?>
         </div>
 

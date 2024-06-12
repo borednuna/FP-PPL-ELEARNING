@@ -174,6 +174,12 @@
                     <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
                 </span>
             </li>
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./notifikasi') ?>">Notifikasi</a>
+                </span>
+            </li>
         </ul>
         <ul class="nav-item1">
             <a href="<?= base_url('logout') ?>">
@@ -202,8 +208,8 @@
             </div>
         </header>
 
-        <?php if (isset($assignment)): ?>
-            <?php foreach ([$assignment] as $assignmentItem): ?>
+        <?php if (isset($assignment)) : ?>
+            <?php foreach ([$assignment] as $assignmentItem) : ?>
                 <form action="<?= base_url('assignments/update/' . $assignmentItem['id']) ?>" method="post">
                     <?= csrf_field() ?>
                     <input type="hidden" name="_method" value="PUT">
@@ -231,7 +237,7 @@
                     Delete Submission
                 </button>
             <?php endforeach; ?>
-        <?php else: ?>
+        <?php else : ?>
             <p>Assignment not found or invalid data.</p>
         <?php endif; ?>
     </div>
@@ -246,4 +252,5 @@
         }
     </script>
 </body>
+
 </html>
