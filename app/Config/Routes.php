@@ -25,5 +25,14 @@ $routes->post('assignments/update_grade', 'AssignmentController::updateGrade');
 $routes->get('class', 'ClassController::view');
 $routes->get('class/create', 'ClassController::create');
 $routes->post('class/create', 'ClassController::save'); 
-$routes->post('class/update/(:num)', 'ClassController::update/$1'); // Sesuaikan dengan method HTTP yang digunakan
+$routes->post('class/update/(:num)', 'ClassController::update/$1'); 
+
+$routes->get('materials/create', 'MaterialController::create');
+$routes->get('materials/create/(:num)', 'MaterialController::create/$1');
+$routes->post('material/create/(:segment)', 'MaterialController::store/$1');
+$routes->post('materials/create', 'MaterialController::save');
+$routes->get('materials/edit/(:num)', 'MaterialController::edit/$1');
+$routes->post('materials/update/(:num)', 'MaterialController::update/$1');
+$routes->get('materials/delete/(:num)', 'MaterialController::delete/$1');
+// Sesuaikan dengan method HTTP yang digunakan
 
