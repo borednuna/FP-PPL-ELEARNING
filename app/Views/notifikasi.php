@@ -175,7 +175,7 @@
             </a>
         </div>
         <ul class="sidebar-nav">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <span style="display: flex; align-items: center; padding-left: 20px;">
                     <img src="./assets/beranda.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                     <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
@@ -204,7 +204,7 @@
                     <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                     <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
                 </span>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <span style="display: flex; align-items: center; padding-left: 20px;">
                     <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
@@ -234,7 +234,7 @@
                 <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>
                     <div class="user-name"><?php echo session()->get('username'); ?></div>
-                    <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
+                    <div class="user-name1" style="font-size: 13px;"><?php echo session()->get('role'); ?></div>
                 </span>
             </div>
         </header>

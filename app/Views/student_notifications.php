@@ -297,7 +297,7 @@
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
                     </span>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./kelas') ?>">Kelas</a>
@@ -320,7 +320,7 @@
                         <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
                     </span>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">

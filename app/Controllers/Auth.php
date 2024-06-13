@@ -61,7 +61,7 @@ class Auth extends BaseController
                     'role' => $user['role'],
                     'logged_in' => TRUE,
                 ]);
-                return redirect()->to('dashboard');
+                return redirect()->to('/');
             } else {
                 $this->session->setFlashdata('login_failed', 'Invalid username or password');
                 return redirect()->to('auth/login');
