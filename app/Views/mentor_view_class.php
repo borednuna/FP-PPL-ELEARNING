@@ -184,10 +184,10 @@
             <li class="nav-item">
                 <span style="display: flex; align-items: center; padding-left: 20px;">
                     <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./kelas') ?>">Kelas</a>
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('class') ?>">Kelas</a>
                 </span>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <span style="display: flex; align-items: center; padding-left: 20px;">
                     <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                     <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal') ?>">Jadwal</a>
@@ -198,11 +198,17 @@
                     <img src="./assets/nilai.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                     <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./nilai') ?>">Nilai</a>
                 </span>
+            </li> -->
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('assignments/create') ?>">Buat Tugas</a>
+                </span>
             </li>
             <li class="nav-item">
                 <span style="display: flex; align-items: center; padding-left: 20px;">
                     <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('materials/create') ?>">Materi</a>
                 </span>
             </li>
         </ul>

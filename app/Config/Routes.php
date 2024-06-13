@@ -36,3 +36,7 @@ $routes->post('materials/update/(:num)', 'MaterialController::update/$1');
 $routes->get('materials/delete/(:num)', 'MaterialController::delete/$1');
 // Sesuaikan dengan method HTTP yang digunakan
 
+$routes->get('notifications', 'NotificationController::showNotifications');
+$routes->get('notifications/read', 'NotificationController::readNotifications');
+
+$routes->get('class/create', 'ClassController::create');
