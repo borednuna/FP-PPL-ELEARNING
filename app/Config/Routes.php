@@ -22,10 +22,18 @@ $routes->delete('assignments/submit/delete/(:num)', 'AssignmentController::delet
 $routes->get('assignments/submissions/(:num)', 'AssignmentController::allSubmissions/$1');
 $routes->post('assignments/update_grade', 'AssignmentController::updateGrade');
 
+//mentor dashboard
+$routes->get('mentordashboard', 'MentorDashboard::index');
 $routes->get('class', 'ClassController::view');
 $routes->get('class/create', 'ClassController::create');
-$routes->post('class/create', 'ClassController::save');
-$routes->post('class/update/(:num)', 'ClassController::update/$1');
+
+$routes->post('class/create', 'ClassController::saveCreate');
+$routes->get('class/detail/(:num)', 'ClassController::detailClass/$1'); 
+$routes->get('class/update/(:num)', 'ClassController::updateClass/$1'); 
+$routes->post('class/update/(:num)', 'ClassController::saveUpdate/$1'); 
+$routes->delete('class/delete/(:num)', 'ClassController::delete/$1'); 
+// $routes->post('class/update/', 'ClassController::update'); 
+
 
 $routes->get('materials/create', 'MaterialController::create');
 $routes->get('materials/create/(:num)', 'MaterialController::create/$1');
@@ -34,7 +42,7 @@ $routes->post('materials/create', 'MaterialController::save');
 $routes->get('materials/edit/(:num)', 'MaterialController::edit/$1');
 $routes->post('materials/update/(:num)', 'MaterialController::update/$1');
 $routes->get('materials/delete/(:num)', 'MaterialController::delete/$1');
-// Sesuaikan dengan method HTTP yang digunakan
+
 
 $routes->get('notifications', 'NotificationController::showNotifications');
 $routes->get('notifications/read', 'NotificationController::readNotifications');
