@@ -24,8 +24,8 @@ $routes->post('assignments/update_grade', 'AssignmentController::updateGrade');
 
 $routes->get('class', 'ClassController::view');
 $routes->get('class/create', 'ClassController::create');
-$routes->post('class/create', 'ClassController::save'); 
-$routes->post('class/update/(:num)', 'ClassController::update/$1'); 
+$routes->post('class/create', 'ClassController::save');
+$routes->post('class/update/(:num)', 'ClassController::update/$1');
 
 $routes->get('materials/create', 'MaterialController::create');
 $routes->get('materials/create/(:num)', 'MaterialController::create/$1');
@@ -40,3 +40,5 @@ $routes->get('notifications', 'NotificationController::showNotifications');
 $routes->get('notifications/read', 'NotificationController::readNotifications');
 
 $routes->get('class/create', 'ClassController::create');
+
+$routes->get('exams/submissions/(:num)', 'ExamController::allExamSubmissions/$1');
