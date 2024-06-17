@@ -22,6 +22,22 @@ class ClassModel extends Model
     {
         return $this->db->table($this->table)->insert($data);
     }
+    public function detailClass($data, $id)
+    {
+        return $this->db->table($this->table)->update($data, ['id' => $id]);
+    }
+    // public function getDetail($id)
+    // {
+    //     $sql = "SELECT * FROM class 
+    //     JOIN user ON class.mentor_id = mentor.id 
+    //     WHERE class.id = ?";
+
+    //     $query = $this->db->query($sql, [$id]);
+    //     $results = $query->getResultArray();
+
+    //     return $results;
+    // }
+
     public function updateClass($data, $id)
     {
         return $this->db->table($this->table)->update($data, ['id' => $id]);
