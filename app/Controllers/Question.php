@@ -2,25 +2,31 @@
 
 namespace App\Controllers;
 
+use App\Models\ExamModel;
 use App\Models\QuestionModel;
+
 
 class Question extends BaseController
 {
     protected $questionModel;
 
+    protected $examModel;
+
     public function __construct()
     {
         $this->questionModel = new QuestionModel();
+        $this->examModel = new ExamModel();
+
     }
 
     public function index()
     {
         $data = [
-            'title' => 'Question',
-            'question' => $this->questionModel->getQuestion()
+            'title' => 'List of Questions',
+            'questions' => $this->questionModel->getQuestion()
         ];
 
-        return view('question/index', $data);
+        return view('mentor_question_list', $data);
     }
 
     public function detail($id)
@@ -32,10 +38,7 @@ class Question extends BaseController
         if ($userRole == 'mentor') {
             $viewName = 'mentor_question_details';
             $data = ['question' => $question];
-        } else if ($userRole == 'student'){
-            $viewName = 'student_question_details';
-            $data = ['question' => $question];
-        }
+        } else return redirect()->to('/class');
 
         $data = [
             'question' => $question
@@ -46,10 +49,13 @@ class Question extends BaseController
 
     public function create()
     {
-        return view('question/create');
+        // load model that handles exam
+        $data = ['exams' => $this->examModel->getExam()];
+
+        return view('mentor_create_question', $data);
     }
 
-    public function save()
+    public function store()
     {
         $userRole = $this->session->get('mentor');
 
@@ -64,5 +70,7 @@ class Question extends BaseController
             'correct_answer' => $this->request->getVar('correct_answer'),
             'exam_id' => $this->request->getVar('exam_id')
         ]);
+
+        return redirect()->to('question/create')->with('success', 'Question has been added successfully!');
     }
 }
