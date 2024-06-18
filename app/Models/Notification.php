@@ -10,6 +10,20 @@ class Notification extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = ['title', 'content', 'user_id'];
 
+    public function getNotificationsByUserId($user_id)
+    {
+        // get all users corresponding to class id
+        $db = \Config\Database::connect();
+        $builder = $db->table('notification'); // Assuming you have a table to store class subscriptions
+
+        $builder->select();
+        $builder->where('user_id', $user_id);
+
+        $query = $builder->get();
+
+        return $query->getResultArray();
+    }
+
     public function getAllSubscribers($class_id)
     {
         // get all users corresponding to class id
