@@ -267,7 +267,7 @@
                             <td><?= $classes['quota'] ?></td>
                             <td><a href="<?php echo site_url('class/detail/'. $classes['id']) ?>" class="btn btn-warning btn-sm">Detail</a></td>
                             <td><a href="<?php echo site_url('class/update/' . $classes['id']) ?>" class="btn btn-success btn-sm">Update</a></td>
-                            <td><a href="<?php echo base_url('class/delete/'. $classes['id']) ?>" method="delete" class="btn btn-danger btn-sm">Delete</a></td>
+                            <td><a href="<?php echo base_url('class/delete/'. $classes['id']) ?>" class="btn btn-danger btn-sm">Delete</a></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

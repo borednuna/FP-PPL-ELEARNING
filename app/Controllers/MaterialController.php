@@ -20,10 +20,9 @@ class MaterialController extends Controller
         return view('material/index', $data);
     }
 
-    public function create()
+    public function create($class_id)
     {
-        return view('mentor_create_class');
-    }
+        return view('material/create', ['class_id' => $class_id]);
 
     public function store()
     {

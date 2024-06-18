@@ -28,7 +28,7 @@ class Database extends Config
         'DSN'          => '',
         'hostname'     => 'localhost',
         'username'     => 'root',
-        'password'     => 'root123',
+        'password'     => '',
         'database'     => 'elearning',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
