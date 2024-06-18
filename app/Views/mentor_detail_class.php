@@ -207,6 +207,24 @@
             <img src="./assets/welcome_guru.png" class="img-fluid" style="padding-bottom: 40px;"><br>
             <div class="row" id="resultPelajaran"></div>
         </div>
+        <h1>Exams in This Class</h1>
+        <?php if (empty($exams)) : ?>
+            <p>No exams found.</p>
+        <?php else : ?>
+            <?php foreach ($exams as $exam) : ?>
+                <div class="card shadow d-flex flex-column" style="align-items: flex-start; margin-bottom:10px; width: 70%">
+                    <div class="card-body img-fuild">
+                        <h6 class="card-title"><?= esc($exam['name']); ?></h6>
+                        <p class="card-title">Start time : <?= esc($exam['start_time']); ?>, End time : <?= esc($exam['end_time']); ?></p>
+                        <div class="card-body img-fluid">
+                        <a class="btn btn-sm btn-primary">Update</a>
+                        <a href="<?= base_url('exams/delete/' . $exam['id']); ?>" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="<?= base_url('question/' . $exam['id']); ?>" class="btn btn-sm btn-warning">Manage Questions</a>
+                    </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
         <h1>Ini Daftar Materi</h1>
         <div class="card shadow d-flex flex-column" style="align-items: flex-start;">
              <div class="card-body img-fuild">

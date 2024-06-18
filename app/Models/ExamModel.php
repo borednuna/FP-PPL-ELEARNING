@@ -19,6 +19,11 @@ class ExamModel extends Model
         }
     }
 
+    public function getExamByClass($id)
+    {
+        return $this->where(['class_id' => $id])->doFindAll();
+    }
+
     public function insertExam($data)
     {
         return $this->db->table($this->table)->insert($data);

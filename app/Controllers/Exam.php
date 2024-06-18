@@ -49,22 +49,27 @@ class Exam extends BaseController
         return view($viewName, $data);
     }
 
-    public function create()
+    public function create($class_id)
     {
-        return view('mentor_create_exam');
+        $data = [
+            'class_id' => $class_id
+        ];
+        return view('mentor_create_exam', $data);
     }
 
-    public function save()
+    public function save($class_id)
     {
+        $now = date('Y-m-d H:i:s');
+
         $this->examModel->insertExam([
             'name' => $this->request->getVar('name'),
-            'class_id' => $this->request->getVar('class_id'),
-            'date_created' => $this->request->getVar('date_created'),
+            'class_id' => $class_id,
+            'date_created' => $now,
             'start_time' => $this->request->getVar('start_time'),
             'end_time' => $this->request->getVar('end_time')
         ]);
 
-        return redirect()->to('/exam');
+        return redirect()->to('/class/detail/' . $class_id);
     }
 
     public function edit($id)
@@ -93,7 +98,7 @@ class Exam extends BaseController
     public function delete($id)
     {
         $this->examModel->deleteExam($id);
-        return redirect()->to('/exam');
+        return redirect()->to('/class');
     }
 }
 

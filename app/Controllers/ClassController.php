@@ -3,18 +3,18 @@
 namespace App\Controllers;
 
 use App\Models\ClassModel;
-use App\Models\Notification;
+use App\Models\ExamModel;
 use PhpParser\Node\Expr\FuncCall;
 
 class ClassController extends BaseController
 {
     protected $ClassModel;
-    protected $NotificationModel;
+    protected $ExamModel;
 
     public function __construct()
     {
         $this->ClassModel = new ClassModel();
-        $this->NotificationModel = new Notification();
+        $this->ExamModel = new ExamModel();
     }
 
     public function index()
@@ -90,7 +90,13 @@ class ClassController extends BaseController
         return view('mentor_view_class', $data);
     }
     public function detailClass($id){
-        return view('mentor_detail_class', ['id' => $id]);
+        $exams = $this->ExamModel->getExamByClass($id);
+        $data = [
+            'exams' => $exams,
+            'id' => $id
+        ];
+
+        return view('mentor_detail_class', $data);
     }
     public function updateClass($id)
     {
