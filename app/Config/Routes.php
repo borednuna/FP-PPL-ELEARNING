@@ -62,4 +62,4 @@ $routes->get('exams/submissions/(:num)', 'ExamController::allExamSubmissions/$1'
 $routes->get('exams/details/(:num)', 'Exam::detail/$1');
 $routes->get('question/create', 'Question::create');
 $routes->post('question/store', 'Question::store');
-$routes->get('question', 'Question::index'); 
+$routes->get('question/(:num)', 'Question::index/$1'); 

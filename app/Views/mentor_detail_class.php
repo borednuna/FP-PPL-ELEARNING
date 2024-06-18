@@ -188,6 +188,10 @@
                     </div>
                 </form>
             </div>
+            <div class="container mt-4" style="width: 20%">
+                <a href="<?= base_url('./add_section') ?>" class="btn btn-primary" style="background-color: #4829B2; color: #ffffff; margin-bottom: 8px">+ Add Section</a>
+                <a href="<?= base_url('./exams/create/' . $id) ?>" class="btn btn-primary" style="background-color: #4829B2; color: #ffffff;">+ Add Exam</a>
+            </div>
 
             <div class="user-info">
                 <img src="<?= base_url('assets/ellipse-1-bg-eyb.png'); ?>" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">

@@ -364,7 +364,7 @@
                 </span>
             </div>
         </div>
-        <h1 class="mt-4">List of Questions</h1>
+        <h1 class="mt-4"><?= $title ?></h1>
         <div class="row">
             <?php foreach ($questions as $question) : ?>
                 <div class="col-md-4 mb-3">

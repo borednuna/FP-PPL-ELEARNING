@@ -90,7 +90,7 @@ class ClassController extends BaseController
         return view('mentor_view_class', $data);
     }
     public function detailClass($id){
-        return view('mentor_detail_class', [$id]);
+        return view('mentor_detail_class', ['id' => $id]);
     }
     public function updateClass($id)
     {

@@ -19,11 +19,12 @@ class Question extends BaseController
 
     }
 
-    public function index()
+    public function index($id)
     {
+        $questions = $this->questionModel->getQuestionByExam($id);
         $data = [
-            'title' => 'List of Questions',
-            'questions' => $this->questionModel->getQuestion()
+            'title' => 'List of Questions For Exam ' . $id,
+            'questions' => $questions
         ];
 
         return view('mentor_question_list', $data);
