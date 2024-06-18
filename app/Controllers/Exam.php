@@ -4,16 +4,19 @@ namespace App\Controllers;
 
 use App\Models\ExamModel;
 use App\Models\QuestionModel;
+use App\Models\Notification;
 
 class Exam extends BaseController
 {
     protected $examModel;
     protected $questionModel;
+    protected $notificationModel;
 
     public function __construct()
     {
         $this->examModel = new ExamModel();
         $this->questionModel = new QuestionModel();
+        $this->notificationModel = new Notification();
     }
 
     public function index()
@@ -68,6 +71,13 @@ class Exam extends BaseController
             'start_time' => $this->request->getVar('start_time'),
             'end_time' => $this->request->getVar('end_time')
         ]);
+        
+        $data = [
+            'title' => 'New Exam',
+            'content' => 'New Exam is up in class ' . $class_id
+        ];
+
+        $this->notificationModel->notify($class_id, $data);
 
         return redirect()->to('/class/detail/' . $class_id);
     }
