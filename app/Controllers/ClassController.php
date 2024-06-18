@@ -39,10 +39,12 @@ class ClassController extends BaseController
             return redirect()->to('class/create')->withInput();
         }
 
+        $mentor_id = $this->session->get('id');
+
         $data = [
             'class_name' => $this->request->getPost('class_name'),
             'class_description' => $this->request->getPost('class_description'),
-            'mentor_id' => 1,
+            'mentor_id' => $mentor_id,
             'quota' => $this->request->getPost('quota')
         ];
 
@@ -52,7 +54,8 @@ class ClassController extends BaseController
 
    public function view($id = null)
     {
-        $class = $this->ClassModel->find($id); // Mengambil data kelas berdasarkan ID
+        $mentor_id = $this->session->get('id');
+        $class = $this->ClassModel->getClassByMentor($mentor_id);
 
         if (!$class) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Class with ID ' . $id . ' not found');
@@ -76,9 +79,10 @@ class ClassController extends BaseController
         }
 
         $data = [
-            'class' => $class
+            'class_data' => $class
         ];
-        return view('mentor_update_class',[$data]);
+
+        return view('mentor_update_class', $data);
     }
     // public function saveUpdate($data, $id)
     // {
@@ -111,10 +115,12 @@ class ClassController extends BaseController
             return redirect()->back()->withInput();
         }
 
+        $mentor_id = $this->session->get('id');
+
         $data = [
             'class_name' => $this->request->getPost('class_name'),
             'class_description' => $this->request->getPost('class_description'),
-            'mentor_id' => 1,
+            'mentor_id' => $mentor_id,
             'quota' => $this->request->getPost('quota')
         ];
 

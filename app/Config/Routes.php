@@ -30,15 +30,10 @@ $routes->get('class/create', 'ClassController::create');
 $routes->post('class/create', 'ClassController::saveCreate');
 $routes->get('class/detail/(:num)', 'ClassController::detailClass/$1'); 
 $routes->get('class/update/(:num)', 'ClassController::updateClass/$1'); 
-<<<<<<< HEAD
-$routes->post('class/update/(:num)', 'ClassController::saveUpdate/$1');
-$routes->get('class/delete/(:num)', 'ClassController::delete/$1');
-=======
 $routes->post('class/update/(:num)', 'ClassController::saveUpdate/$1'); 
-$routes->delete('class/delete/(:num)', 'ClassController::delete/$1'); 
+$routes->get('class/delete/(:num)', 'ClassController::delete/$1'); 
 // $routes->post('class/update/', 'ClassController::update'); 
 
->>>>>>> d0065eb27ac05bcff4c1b8ee0fea978635ba05ac
 
 //student
 $routes->get('student/class', 'ClassController::studentClass');
