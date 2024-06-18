@@ -29,7 +29,7 @@ class ClassController extends BaseController
         return view('mentor_create_class');
     }
 
-    public function save()
+    public function saveCreate()
     {
         if (!$this->validate([
             'class_name' => 'required',
@@ -65,6 +65,33 @@ class ClassController extends BaseController
         return view('mentor_view_class', $data);
     }
 
+    // public function detailClass() {
+    //     return view('mentor_detail_class');
+    // }
+
+    // public function getDetail($id)
+    // {
+    //     $sql = "SELECT * FROM class 
+    //     JOIN user ON class.mentor_id = mentor.id 
+    //     WHERE class.id = ?";
+
+    //     $query = $this->db->query($sql, [$id]);
+    //     $results = $query->getResultArray();
+
+    //     return $results;
+    // }
+
+    public function detailClass($id)
+    {
+        // $details = $this->ClassModel->getDetail($id);
+
+        // $classes = [
+        //     'classes' => $details
+        // ];
+
+        return view('mentor_detail_class', [$id]);
+    }
+
     // public function update($id){
  
     //     if (!$this->validate([
@@ -87,17 +114,56 @@ class ClassController extends BaseController
 
     //     return redirect()->to("/class/update/{$id}");
     // }
+    public function updateClass($id)
+    {
+        return view('mentor_update_class',[$id]);
+    }
 
-    public function update($id) {
-        // Mengirimkan ID ke view agar dapat digunakan dalam link
-        $class = $this->ClassModel->get($id); // Ganti Your_model_name dengan nama model Anda
-        return view('mentor_update_class', ['class' => $class]);
+    // public function saveUpdate($data, $id)
+    // {
+    //     if (!$this->validate([
+    //         'class_name' => 'required',
+    //         'class_description' => 'required',
+    //         'quota' => 'required',
+    //     ])) {
+    //         return redirect()->to('class/update')->withInput();
+    //     }
+
+    //     $data = [
+    //         'class_name' => $this->request->getPost('class_name'),
+    //         'class_description' => $this->request->getPost('class_description'),
+    //         'mentor_id' => 1,
+    //         'quota' => $this->request->getPost('quota')
+    //     ];
+
+    //     $this->ClassModel->updateClass($data, $id);
+    //     return redirect()->to("class");
+    // }
+    public function saveUpdate($data, $id)
+    {
+        if (!$this->validate([
+            'class_name' => 'required',
+            'class_description' => 'required',
+            'quota' => 'required',
+        ])) {
+            return redirect()->back()->withInput();
+        }
+
+        $data = [
+            'class_name' => $this->request->getPost('class_name'),
+            'class_description' => $this->request->getPost('class_description'),
+            'mentor_id' => 1,  
+            'quota' => $this->request->getPost('quota')
+        ];
+
+        $this->ClassModel->updateClass($data, $id);
+        return redirect()->to('class');
     }
 
 
     public function delete($id)
     {
-        $this->ClassModel->delete($id);
+        $this->ClassModel->deleteClass($id);
         return redirect()->to('class');
     }
 }

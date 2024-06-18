@@ -223,12 +223,15 @@
                     </div>
                 </form>
             </div>
+            <div class="container mt-4" style="width: 20%">
+                <a href="<?php echo site_url('class/create') ?>" class="btn btn-primary" style="background-color: #4829B2; color: #ffffff;">+ Add Class</a>
+            </div>
 
             <div class="user-info">
                 <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>
                     <div class="user-name"><?php echo session()->get('username'); ?></div>
-                    <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
+                    <div class="user-name1" style="font-size: 13px;">Mentor</div>
                 </span>
             </div>
         </header>
@@ -244,7 +247,7 @@
                             <th>Class Name</th>
                             <th>Description</th>
                             <th>Quota</th>
-                            <th>View</th>
+                            <th>Detail</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -256,9 +259,9 @@
                             <td><?= $classes['class_name'] ?></td>
                             <td><?= $classes['class_description'] ?></td>
                             <td><?= $classes['quota'] ?></td>
-                            <td><a href="<?= base_url('class/details') ?>" class="btn btn-warning btn-sm">View</a></td>
-                            <td><a href="<?= base_url('class/update/' . $classes['id']) ?>" class="btn btn-success btn-sm">Update</a></td>
-                            <td><a href="<?= base_url('class/delete') ?>" class="btn btn-danger btn-sm">Delete</a></td>
+                            <td><a href="<?php echo site_url('class/detail/'. $classes['id']) ?>" class="btn btn-warning btn-sm">Detail</a></td>
+                            <td><a href="<?php echo site_url('class/update/' . $classes['id']) ?>" class="btn btn-success btn-sm">Update</a></td>
+                            <td><a href="<?php echo base_url('class/delete/'. $classes['id']) ?>" class="btn btn-danger btn-sm">Delete</a></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

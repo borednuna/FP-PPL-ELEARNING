@@ -1,3 +1,115 @@
+
+-- Create the `user` table
+CREATE TABLE `user` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `username` VARCHAR(50) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(100) NOT NULL,
+    `role` ENUM('admin', 'mentor', 'student') NOT NULL
+);
+
+-- Create the `notification` table
+CREATE TABLE `notification` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `title` VARCHAR(100) NOT NULL,
+    `content` TEXT NOT NULL,
+    `user_id` INT NOT NULL,
+    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE
+);
+
+-- Create the `class` table
+CREATE TABLE `class` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `class_name` VARCHAR(100) NOT NULL,
+    `date_created` DATETIME NOT NULL,
+    `class_description` TEXT NOT NULL,
+    `mentor_id` INT NOT NULL,
+    `quota` INT NOT NULL,
+    FOREIGN KEY (`mentor_id`) REFERENCES `user`(`id`) ON DELETE CASCADE
+);
+
+-- Create the `class_user` table (association table for classes and users)
+CREATE TABLE `class_user` (
+    `class_id` INT NOT NULL,
+    `user_id` INT NOT NULL,
+    PRIMARY KEY (`class_id`, `user_id`),
+    FOREIGN KEY (`class_id`) REFERENCES `class`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE
+);
+
+-- Create the `material` table
+CREATE TABLE `material` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `title` VARCHAR(100) NOT NULL,
+    `material_description` TEXT NOT NULL,
+    `class_id` INT NOT NULL,
+    `date_created` DATETIME NOT NULL,
+    `material_content` TEXT NOT NULL,
+    `video_path` VARCHAR(255) NOT NULL,
+    FOREIGN KEY (`class_id`) REFERENCES `class`(`id`) ON DELETE CASCADE
+);
+
+-- Create the `assignment` table
+CREATE TABLE `assignment` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(100) NOT NULL,
+    `description` TEXT NOT NULL,
+    `material_id` INT NOT NULL,
+    `deadline` DATETIME NOT NULL,
+    FOREIGN KEY (`material_id`) REFERENCES `material`(`id`) ON DELETE CASCADE
+);
+
+-- Create the `submission` table
+CREATE TABLE `submission` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `assignment_id` INT NOT NULL,
+    `user_id` INT NOT NULL,
+    `uploaded_file` VARCHAR(255) NOT NULL,
+    `date_submitted` DATETIME NOT NULL,
+    FOREIGN KEY (`assignment_id`) REFERENCES `assignment`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE
+);
+
+-- Create the `exam` table
+CREATE TABLE `exam` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(100) NOT NULL,
+    `class_id` INT NOT NULL,
+    `date_created` DATETIME NOT NULL,
+    `start_time` DATETIME NOT NULL,
+    `end_time` DATETIME NOT NULL,
+    FOREIGN KEY (`class_id`) REFERENCES `class`(`id`) ON DELETE CASCADE
+);
+
+-- Create the `question` table
+CREATE TABLE `question` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `question` TEXT NOT NULL,
+    `option_a` VARCHAR(255) NOT NULL,
+    `option_b` VARCHAR(255) NOT NULL,
+    `option_c` VARCHAR(255) NOT NULL,
+    `option_d` VARCHAR(255) NOT NULL,
+    `option_e` VARCHAR(255) NOT NULL,
+    `correct_answer` CHAR(1) NOT NULL,
+    `exam_id` INT NOT NULL,
+    FOREIGN KEY (`exam_id`) REFERENCES `exam`(`id`) ON DELETE CASCADE
+);
+
+-- Create the `exam_submission` table
+CREATE TABLE `exam_submission` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `exam_submission_description` TEXT NOT NULL,
+    `date_submitted` DATETIME NOT NULL,
+    `exam_id` INT NOT NULL,
+    `user_id` INT NOT NULL,
+    `correct_answer` INT NOT NULL,
+    `wrong_answer` INT NOT NULL,
+    `score` INT NOT NULL,
+    FOREIGN KEY (`exam_id`) REFERENCES `exam`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE
+);
+
+
 INSERT INTO `user` (`username`, `password`, `email`, `role`) VALUES ('nuna', 'nuna123', 'nunanuna123@gmail.com', 'mentor');
 INSERT INTO `user` (`username`, `password`, `email`, `role`) VALUES ('bong', 'bong123', 'bongbong123@gmail.com', 'mentor');
 INSERT INTO `user` (`username`, `password`, `email`, `role`) VALUES ('meng', 'meng123', 'mengmeng123@gmail.com', 'student');
@@ -91,3 +203,4 @@ INSERT INTO `question` (`question`, `option_a`, `option_b`, `option_c`, `option_
 INSERT INTO `exam_submission` (`exam_submission_description`, `date_submitted`, `exam_id`, `user_id`, `correct_answer`, `wrong_answer`, `score`) VALUES ('This is my HTML exam submission', '2021-01-10 00:00:00', 1, 3, 1, 4, 20);
 INSERT INTO `exam_submission` (`exam_submission_description`, `date_submitted`, `exam_id`, `user_id`, `correct_answer`, `wrong_answer`, `score`) VALUES ('This is my CSS exam submission', '2021-01-10 00:00:00', 2, 3, 2, 3, 40);
 INSERT INTO `exam_submission` (`exam_submission_description`, `date_submitted`, `exam_id`, `user_id`, `correct_answer`, `wrong_answer`, `score`) VALUES ('This is my JavaScript exam submission', '2021-01-10 00:00:00', 3, 3, 3, 2, 60);
+
