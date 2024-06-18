@@ -23,7 +23,6 @@ class MaterialController extends Controller
     public function create($class_id)
     {
         return view('material/create', ['class_id' => $class_id]);
-    }
 
     public function store()
     {
