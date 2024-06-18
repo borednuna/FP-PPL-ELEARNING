@@ -358,16 +358,19 @@
 
         <h1>Notifikasi</h1>
         <div class="row row-cols-1 g-4">
+        <?php if (empty($notifications)) : ?>
+            <p>No exams found.</p>
+        <?php else : ?>
             <?php foreach ($notifications as $notification) : ?>
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $notification['title'] ?></h5>
                             <p class="card-text"><?= $notification['content'] ?></p>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
+        <?php endif; ?>
         </div>
     </div>
 </body>
