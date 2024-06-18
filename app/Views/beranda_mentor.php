@@ -24,7 +24,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #002979;
+            background-color: #4829B2;
             color: #fff;
             padding-top: 40px;
             padding-right: 20px;
@@ -100,7 +100,7 @@
         }
 
         .desktop-1-Mss {
-            background-color: #333;
+            background-color: #F1E8F6;
             color: #fff;
             padding: 10px;
         }
@@ -231,13 +231,19 @@
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?php echo site_url('student/class'); ?>">Kelas</a>
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('class') ?>">Kelas</a>
                     </span>
                 </li>
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal') ?>">Jadwal</a>
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('assignments/create') ?>">Tugas</a>
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <span style="display: flex; align-items: center; padding-left: 20px;">
+                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('notifications/') ?>">Notifikasi</a>
                     </span>
                 </li>
                 <li class="nav-item1 text-center">
@@ -270,9 +276,9 @@
         <!-- Add separate containers for pelajaran and tugas -->
         <div style="margin: 20px;">
             <img src="./assets/welcome.png" class="img-fluid"><br>
-            <h5 style="padding-top: 12px; padding-bottom: 12px;">Lanjutkan Belajar</h5>
+            <h5 style="padding-top: 12px; padding-bottom: 12px;">Kelola Kelas</h5>
             <div class="row" id="resultPelajaran"></div>
-            <h5>Kerjakan Tugasmu</h5>
+            <h5>Buat Kelas, materi, atau tugas</h5>
             <div class="row mt-4" id="resultTugas"></div>
         </div>
 

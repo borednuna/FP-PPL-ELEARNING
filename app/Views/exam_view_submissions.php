@@ -175,7 +175,7 @@
             </a>
         </div>
         <ul class="sidebar-nav">
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <span style="display: flex; align-items: center; padding-left: 20px;">
                     <img src="./assets/beranda.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                     <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
@@ -204,12 +204,6 @@
                     <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                     <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
                 </span>
-            </li> -->
-            <li class="nav-item">
-                <span style="display: flex; align-items: center; padding-left: 20px;">
-                    <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./notifikasi') ?>">Notifikasi</a>
-                </span>
             </li>
         </ul>
         <ul class="nav-item1">
@@ -234,23 +228,38 @@
                 <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>
                     <div class="user-name"><?php echo session()->get('username'); ?></div>
-                    <div class="user-name1" style="font-size: 13px;"><?php echo session()->get('role'); ?></div>
+                    <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
                 </span>
             </div>
         </header>
 
-        <h1>Notifikasi</h1>
-        <div class="row row-cols-1 g-4">
-            <?php foreach ($notifications as $notification) : ?>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $notification['title'] ?></h5>
-                            <p class="card-text"><?= $notification['content'] ?></p>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+        <!-- table -->
+        <div class="container mt-4">
+            <div class="assignment" style="margin-top: 20px;">
+                <h1>Pengumpulan Ujian</h1>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Siswa</th>
+                            <th>Tanggal Pengumpulan</th>
+                            <th>Jawaban Benar</th>
+                            <th>Jawaban Salah</th>
+                            <th>Nilai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($submissions as $submission) : ?>
+                            <tr>
+                                <td><?= $submission['username'] ?></td>
+                                <td><?= $submission['date_submitted'] ?></td>
+                                <td><?= $submission['correct_answer'] ?></td>
+                                <td><?= $submission['wrong_answer'] ?></td>
+                                <td><?= $submission['score'] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>

@@ -15,7 +15,6 @@
             margin: 0;
             padding-top: 20px;
             font-family: Inter, sans-serif;
-            overflow: hidden;
         }
 
         /* Sidebar styling */
@@ -25,7 +24,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #4829B2;
+            background-color: #002979;
             color: #fff;
             padding-top: 40px;
             padding-right: 20px;
@@ -62,7 +61,7 @@
             padding: 0.5rem 1rem;
             text-decoration: none;
             color: red;
-            background-color: #F1E8F6;
+            background-color: white;
             border-radius: 10px;
         }
 
@@ -210,71 +209,6 @@
             background-color: #32CA4D;
             /* Set text color to white */
         }
-
-        .assignment-card {
-            height: 100%;
-            width: 90%;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            margin: 20px;
-            border-radius: 7px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            background-color: #fff;
-        }
-
-        h1 {
-            font-size: 26px;
-            font-weight: 700;
-            color: #333;
-        }
-
-        h2 {
-            margin: 20px 0;
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        textarea.form-control {
-            width: 100%;
-            height: 150px;
-            resize: both;
-        }
-
-        .submit-button {
-            display: inline-block;
-            padding: 10px 20px;
-            color: white;
-            background-color: #28a745;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .submit-button:hover {
-            background-color: #218838;
-        }
-
-        .custom-button {
-            display: inline-block;
-            padding: 10px 20px;
-            color: white;
-            background-color: #28a745;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            width: 100%;
-            margin: 10px 0;
-        }
-
-        .custom-button:hover {
-            background-color: #218838;
-        }
     </style>
 </head>
 
@@ -294,40 +228,32 @@
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
                     </span>
                 </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('class') ?>">Kelas</a>
-                    </span>
-                </li>
                 <!-- <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal') ?>">Jadwal</a>
+                        <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?php echo site_url('student/class'); ?>">Kelas</a>
                     </span>
                 </li> -->
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('assignments/create') ?>">Tugas</a>
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('assignments/details/4') ?>">Detail Tugas</a>
                     </span>
                 </li>
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('materials/create') ?>">Materi</a>
+                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('notifications/read') ?>">Notifikasi</a>
                     </span>
                 </li>
-            </ul>
-            <ul class="nav-item1">
-                <a href="<?= base_url('logout') ?>">
-                    Keluar
-                </a>
+                <li class="nav-item1 text-center">
+                    <a class="nav-link active" aria-current="page" href="<?php echo site_url('auth/logout'); ?>">Keluar</a>
+                </li>
             </ul>
         </div>
     </header>
 
-    <div class="container" style="margin-left: 270px;">
+    <div style="margin-left: 270px;">
         <div class="d-flex justify-content-between align-items-center">
             <div class="container mt-4" style="width: 81%;">
                 <form class="form-inline">
@@ -347,19 +273,13 @@
             </div>
         </div>
 
-        <div class="assignment-card">
-            <h1>Create Assignment</h1>
-            <?php echo form_open('assignments/create', 'method="post"'); ?>
-                <label for="name">Assignment Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Name" required><br>
-
-                <label for="description">Description</label>
-                <textarea class="form-control" name="description" placeholder="Description" required></textarea>
-
-                <label for="deadline">Deadline</label>
-                <input type="text" class="form-control" name="deadline" required><br>
-                <button type="submit" class="custom-button">Create Assignment</button>
-            <?php echo form_close(); ?>
+        <!-- Add separate containers for pelajaran and tugas -->
+        <div style="margin: 20px;">
+            <img src="./assets/welcome.png" class="img-fluid"><br>
+            <h5 style="padding-top: 12px; padding-bottom: 12px;">Lanjutkan Belajar</h5>
+            <div class="row" id="resultPelajaran"></div>
+            <h5>Kerjakan Tugasmu</h5>
+            <div class="row mt-4" id="resultTugas"></div>
         </div>
 
     </div>
