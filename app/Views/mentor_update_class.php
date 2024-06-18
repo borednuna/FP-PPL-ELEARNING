@@ -349,18 +349,23 @@
         
         <div class="class-card">
             <h1>Update Class</h1>
-                <?php echo form_open ("class/update/" , ['method' => 'post']); ?>
+            <?php if (isset($class_data)): ?>
+                <?= form_open("class/update/" . $class_data['id'], ['method' => 'post']); ?>
+                    <?= csrf_field(); ?>
                     <label for="class_name">Class Name</label>
-                    <input type="text" class="form-control" name="class_name" placeholder="Name" required><br>
+                    <input type="text" class="form-control" name="class_name" value="<?= esc($class_data['class_name']); ?>" placeholder="Name" required><br>
 
                     <label for="class_description">Description</label>
-                    <textarea class="form-control" name="class_description" placeholder="Description" required></textarea>
+                    <textarea class="form-control" name="class_description" placeholder="Description" required><?= esc($class_data['class_description']); ?></textarea><br>
 
                     <label for="quota">Quota</label>
-                    <input type="text" class="form-control" name="quota" required><br>
+                    <input type="text" class="form-control" name="quota" value="<?= esc($class_data['quota']); ?>" required><br>
 
                     <button type="submit" class="custom-button">Update Class</button>
-                <?php echo form_close(); ?>
+                <?= form_close(); ?>
+            <?php else: ?>
+                <p>Class data not found.</p>
+            <?php endif; ?>
         </div>
 
 

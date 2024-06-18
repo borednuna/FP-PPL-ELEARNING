@@ -18,6 +18,12 @@ class ClassModel extends Model
             return $this->where(['id' => $id])->first();
         }
     }
+
+    public function getClassByMentor($mentor_id)
+    {
+        return $this->where(['mentor_id' => $mentor_id])->findAll();
+    }
+
     public function insertClass($data)
     {
         return $this->db->table($this->table)->insert($data);
