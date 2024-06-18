@@ -15,7 +15,6 @@
             margin: 0;
             padding-top: 20px;
             font-family: Inter, sans-serif;
-            overflow: hidden;
         }
 
         /* Sidebar styling */
@@ -25,7 +24,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #4829B2;
+            background-color: #002979;
             color: #fff;
             padding-top: 40px;
             padding-right: 20px;
@@ -62,7 +61,7 @@
             padding: 0.5rem 1rem;
             text-decoration: none;
             color: red;
-            background-color: #F1E8F6;
+            background-color: white;
             border-radius: 10px;
         }
 
@@ -77,7 +76,6 @@
             justify-content: flex-end;
             padding: 30px;
             padding-bottom: 0px;
-
         }
 
         .user-info img {
@@ -100,97 +98,29 @@
             /* Center the image */
         }
 
-        .desktop-1-Mss {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-        }
-
-        .auto-group-39fb-PpZ {
-            display: flex;
+        .d-flex {
             justify-content: space-between;
             align-items: center;
         }
 
-        .vector-zxm {
-            width: 50px;
-            height: auto;
+        /* Add separate containers for pelajaran and tugas */
+        .result-container {
+            margin: 20px;
         }
 
-        .navbar-43-WRK {
+        .result-container h5 {
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .result-container .row {
             display: flex;
-            align-items: center;
-        }
-
-        .auto-group-zq2d-y41 {
-            display: flex;
-            align-items: center;
-        }
-
-        .frame-63-hVo {
-            display: flex;
-            align-items: center;
-        }
-
-        .frame-64-3Zf {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-        }
-
-        .raphael-books-XNM {
-            width: 30px;
-            height: auto;
-            margin-right: 10px;
-        }
-
-        .media-ilmu-pcM,
-        .catalog-JGd,
-        .delivery-R6M,
-        .delivery-LUD {
-            margin: 0;
-            padding: 0;
-            margin-right: 20px;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .frame-65-5Au {
-            display: flex;
-            align-items: center;
-        }
-
-        .ellipse-1-Nvh {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: #fff;
-            margin-right: 10px;
-        }
-
-        .delivery-1Ts {
-            margin: 0;
-            padding: 0;
-            margin-right: 10px;
-            color: #fff;
-        }
-
-        .iconamoon-arrow-up-2-light-jem {
-            width: 20px;
-            height: auto;
-        }
-
-        .navbar-nav .nav-link {
-            outline: none;
-        }
-
-        .navbar-nav .nav-item.active a {
-            color: blue;
-            font-weight: bold;
+            gap: 20px;
         }
 
         .card {
-            height: 100%;
+            flex: 1 1 300px;
+            /* Added flex property */
             display: flex;
             flex-direction: column;
         }
@@ -209,71 +139,6 @@
             color: #ffffff;
             background-color: #32CA4D;
             /* Set text color to white */
-        }
-
-        .assignment-card {
-            height: 100%;
-            width: 90%;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            margin: 20px;
-            border-radius: 7px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            background-color: #fff;
-        }
-
-        h1 {
-            font-size: 26px;
-            font-weight: 700;
-            color: #333;
-        }
-
-        h2 {
-            margin: 20px 0;
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        textarea.form-control {
-            width: 100%;
-            height: 150px;
-            resize: both;
-        }
-
-        .submit-button {
-            display: inline-block;
-            padding: 10px 20px;
-            color: white;
-            background-color: #28a745;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .submit-button:hover {
-            background-color: #218838;
-        }
-
-        .custom-button {
-            display: inline-block;
-            padding: 10px 20px;
-            color: white;
-            background-color: #28a745;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            width: 100%;
-            margin: 10px 0;
-        }
-
-        .custom-button:hover {
-            background-color: #218838;
         }
     </style>
 </head>
@@ -306,28 +171,14 @@
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal') ?>">Jadwal</a>
                     </span>
                 </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/nilai.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./nilai') ?>">Nilai</a>
-                    </span>
+                <li class="nav-item1 text-center">
+                    <a class="nav-link active" aria-current="page" href="<?= base_url('./login') ?>">Keluar</a>
                 </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
-                    </span>
-                </li>
-            </ul>
-            <ul class="nav-item1">
-                <a href="<?= base_url('logout') ?>">
-                    Keluar
-                </a>
             </ul>
         </div>
     </header>
 
-    <div class="container" style="margin-left: 270px;">
+    <div style="margin-left: 270px;">
         <div class="d-flex justify-content-between align-items-center">
             <div class="container mt-4" style="width: 81%;">
                 <form class="form-inline">
@@ -341,32 +192,18 @@
             <div class="user-info">
                 <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>
-                    <div class="user-name"><?php echo session()->get('username'); ?></div>
-                    <div class="user-name1" style="font-size: 13px;">Mentor</div>
+                    <div class="user-name">Melanie Refman</div>
+                    <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
                 </span>
             </div>
         </div>
-        
-        <div class="class-card">
-            <h1>Update Class</h1>
-                <?php echo form_open ("class/update/" , ['method' => 'post']); ?>
-                    <label for="class_name">Class Name</label>
-                    <input type="text" class="form-control" name="class_name" placeholder="Name" required><br>
 
-                    <label for="class_description">Description</label>
-                    <textarea class="form-control" name="class_description" placeholder="Description" required></textarea>
-
-                    <label for="quota">Quota</label>
-                    <input type="text" class="form-control" name="quota" required><br>
-
-                    <button type="submit" class="custom-button">Update Class</button>
-                <?php echo form_close(); ?>
+        <!-- Add separate containers for pelajaran and tugas -->
+        <div class="result-container">
+            <img src="<?= base_url('assets/welcome.png'); ?>" class="img-fluid" style="padding-bottom: 40px;"><br>
+            <div class="row" id="resultPelajaran"></div>
         </div>
-
-
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
 </html>

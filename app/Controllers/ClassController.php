@@ -64,61 +64,22 @@ class ClassController extends BaseController
 
         return view('mentor_view_class', $data);
     }
-
-    // public function detailClass() {
-    //     return view('mentor_detail_class');
-    // }
-
-    // public function getDetail($id)
-    // {
-    //     $sql = "SELECT * FROM class 
-    //     JOIN user ON class.mentor_id = mentor.id 
-    //     WHERE class.id = ?";
-
-    //     $query = $this->db->query($sql, [$id]);
-    //     $results = $query->getResultArray();
-
-    //     return $results;
-    // }
-
-    public function detailClass($id)
-    {
-        // $details = $this->ClassModel->getDetail($id);
-
-        // $classes = [
-        //     'classes' => $details
-        // ];
-
+    public function detailClass($id){
         return view('mentor_detail_class', [$id]);
     }
-
-    // public function update($id){
- 
-    //     if (!$this->validate([
-    //         'class_name' => 'required',
-    //         'class_description' => 'required',
-    //         'quota' => 'required',
-    //     ])) {
-    //         return redirect()->to("/class/update/{$id}");
-    //     }
-
-    //     $class = $this->ClassModel->getClass($id);
-    //     $data = [
-    //         'name' => $this->request->getPost('class_name'),
-    //         'description' => $this->request->getPost('class_description'),
-    //         'mentor_id' => $class['mentor_id'], 
-    //         'quota' => $this->request->getPost('quota'),
-    //     ];
-
-    //     $this->ClassModel->updateClass($data, $id);
-
-    //     return redirect()->to("/class/update/{$id}");
-    // }
     public function updateClass($id)
     {
-        return view('mentor_update_class',[$id]);
-    }
+        $class = $this->ClassModel->find($id);
 
+        if (!$class) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Class with ID ' . $id . ' not found');
+        }
+
+        $data = [
+            'class' => $class
+        ];
+        return view('mentor_update_class',[$data]);
+    }
     // public function saveUpdate($data, $id)
     // {
     //     if (!$this->validate([
@@ -126,20 +87,21 @@ class ClassController extends BaseController
     //         'class_description' => 'required',
     //         'quota' => 'required',
     //     ])) {
-    //         return redirect()->to('class/update')->withInput();
+    //         return redirect()->back()->withInput();
     //     }
 
     //     $data = [
     //         'class_name' => $this->request->getPost('class_name'),
     //         'class_description' => $this->request->getPost('class_description'),
-    //         'mentor_id' => 1,
+    //         'mentor_id' => 1,  
     //         'quota' => $this->request->getPost('quota')
     //     ];
 
     //     $this->ClassModel->updateClass($data, $id);
-    //     return redirect()->to("class");
+    //     return redirect()->to('class');
     // }
-    public function saveUpdate($data, $id)
+
+    public function saveUpdate($id)
     {
         if (!$this->validate([
             'class_name' => 'required',
@@ -152,18 +114,33 @@ class ClassController extends BaseController
         $data = [
             'class_name' => $this->request->getPost('class_name'),
             'class_description' => $this->request->getPost('class_description'),
-            'mentor_id' => 1,  
+            'mentor_id' => 1,
             'quota' => $this->request->getPost('quota')
         ];
+
+        log_message('info', 'Updating class with ID: ' . $id);
+        log_message('info', 'Data: ' . print_r($data, true));
 
         $this->ClassModel->updateClass($data, $id);
         return redirect()->to('class');
     }
-
-
     public function delete($id)
     {
         $this->ClassModel->deleteClass($id);
         return redirect()->to('class');
+    }
+
+    //student
+    public function studentClass()
+    {
+        $data = [
+            'title' => 'Student Class',
+            'classes' => $this->ClassModel->getClass()
+        ];
+
+        return view('student_class', $data);
+    }
+    public function studentClassDetail($id){
+        return view('student_detail_class', [$id]);
     }
 }

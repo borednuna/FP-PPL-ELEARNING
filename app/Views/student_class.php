@@ -15,7 +15,6 @@
             margin: 0;
             padding-top: 20px;
             font-family: Inter, sans-serif;
-            overflow: hidden;
         }
 
         /* Sidebar styling */
@@ -25,7 +24,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #4829B2;
+            background-color: #002979;
             color: #fff;
             padding-top: 40px;
             padding-right: 20px;
@@ -62,7 +61,7 @@
             padding: 0.5rem 1rem;
             text-decoration: none;
             color: red;
-            background-color: #F1E8F6;
+            background-color: white;
             border-radius: 10px;
         }
 
@@ -180,6 +179,32 @@
             height: auto;
         }
 
+
+        .bg-success {
+            background-color: #DDFEDF !important;
+            /* Hijau */
+        }
+
+        .bg-primary {
+            background-color: #DDEEFE !important;
+            /* Biru */
+        }
+
+        .bg-purple {
+            background-color: #E8DDFE !important;
+            /* Ungu */
+        }
+
+        .bg-pink {
+            background-color: #FEDDDD !important;
+            /* Pink */
+        }
+
+        .bg-orange {
+            background-color: #FFF0BB !important;
+            /* Kuning */
+        }
+
         .navbar-nav .nav-link {
             outline: none;
         }
@@ -193,6 +218,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            background-color: #fff;
         }
 
         .card img {
@@ -206,74 +232,9 @@
             display: inline-block;
             padding: 0.5rem 1rem;
             border-radius: 0.25rem;
-            color: #ffffff;
-            background-color: #32CA4D;
+            color: #000;
+            background-color: #FFF0BB;
             /* Set text color to white */
-        }
-
-        .assignment-card {
-            height: 100%;
-            width: 90%;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            margin: 20px;
-            border-radius: 7px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            background-color: #fff;
-        }
-
-        h1 {
-            font-size: 26px;
-            font-weight: 700;
-            color: #333;
-        }
-
-        h2 {
-            margin: 20px 0;
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        textarea.form-control {
-            width: 100%;
-            height: 150px;
-            resize: both;
-        }
-
-        .submit-button {
-            display: inline-block;
-            padding: 10px 20px;
-            color: white;
-            background-color: #28a745;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .submit-button:hover {
-            background-color: #218838;
-        }
-
-        .custom-button {
-            display: inline-block;
-            padding: 10px 20px;
-            color: white;
-            background-color: #28a745;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            width: 100%;
-            margin: 10px 0;
-        }
-
-        .custom-button:hover {
-            background-color: #218838;
         }
     </style>
 </head>
@@ -291,13 +252,13 @@
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="./assets/beranda.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./') ?>">Beranda</a>
                     </span>
                 </li>
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./kelas') ?>">Kelas</a>
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Kelas</a>
                     </span>
                 </li>
                 <li class="nav-item">
@@ -306,34 +267,20 @@
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal') ?>">Jadwal</a>
                     </span>
                 </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/nilai.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./nilai') ?>">Nilai</a>
-                    </span>
+                <li class="nav-item1 text-center">
+                    <a class="nav-link active" aria-current="page" href="<?= base_url('./login') ?>">Keluar</a>
                 </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
-                    </span>
-                </li>
-            </ul>
-            <ul class="nav-item1">
-                <a href="<?= base_url('logout') ?>">
-                    Keluar
-                </a>
             </ul>
         </div>
     </header>
 
-    <div class="container" style="margin-left: 270px;">
-        <div class="d-flex justify-content-between align-items-center">
+    <div style="margin-left: 270px;">
+        <div class="d-flex justify-content-between align-items-center" style=" padding-bottom:10px;">
             <div class="container mt-4" style="width: 81%;">
                 <form class="form-inline">
                     <div class="d-flex justify-content-between align-items-center">
                         <input class="form-control" type="search" placeholder="Cari kelas sekarang..." id="searchInput" aria-label="Search">
-                        <button class="btn btn-primary" type="button" onclick="searchPelajaran()">Cari</button>
+                        <button class="btn btn-primary" type="button" onclick="searchKelas()">Cari</button>
                     </div>
                 </form>
             </div>
@@ -341,30 +288,30 @@
             <div class="user-info">
                 <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>
-                    <div class="user-name"><?php echo session()->get('username'); ?></div>
-                    <div class="user-name1" style="font-size: 13px;">Mentor</div>
+                    <div class="user-name">Melanie Refman</div>
+                    <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
                 </span>
             </div>
         </div>
-        
-        <div class="class-card">
-            <h1>Update Class</h1>
-                <?php echo form_open ("class/update/" , ['method' => 'post']); ?>
-                    <label for="class_name">Class Name</label>
-                    <input type="text" class="form-control" name="class_name" placeholder="Name" required><br>
 
-                    <label for="class_description">Description</label>
-                    <textarea class="form-control" name="class_description" placeholder="Description" required></textarea>
-
-                    <label for="quota">Quota</label>
-                    <input type="text" class="form-control" name="quota" required><br>
-
-                    <button type="submit" class="custom-button">Update Class</button>
-                <?php echo form_close(); ?>
+        <!-- Add a container for kelas -->
+       <div style="margin: 20px;">
+        <div class="row" id="resultKelas">
+            <?php foreach ($classes as $class) : ?>
+                <div class="col-md-4 mb-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="<?= base_url('assets/blue.jpg'); ?>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= esc($class['class_name']); ?></h5>
+                            <p class="card-text"><?= esc($class['class_description']); ?></p>
+                            <a href="<?php echo site_url('student/class/detail/'. $class['id']) ?>" class="btn btn-primary">Detail</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
-
-
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

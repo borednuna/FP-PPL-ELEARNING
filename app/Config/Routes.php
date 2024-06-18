@@ -29,8 +29,12 @@ $routes->get('class/create', 'ClassController::create');
 $routes->post('class/create', 'ClassController::saveCreate');
 $routes->get('class/detail/(:num)', 'ClassController::detailClass/$1'); 
 $routes->get('class/update/(:num)', 'ClassController::updateClass/$1'); 
-$routes->post('class/update/(:num)', 'ClassController::saveUpdate/$1'); 
+$routes->post('class/update/(:num)', 'ClassController::saveUpdate/$1');
 $routes->get('class/delete/(:num)', 'ClassController::delete/$1');
+
+//student
+$routes->get('student/class', 'ClassController::studentClass');
+$routes->get('student/class/detail/(:num)', 'ClassController::studentClassDetail/$1');
 
 $routes->get('materials/create', 'MaterialController::create');
 $routes->get('materials/create/(:num)', 'MaterialController::create/$1');
