@@ -297,13 +297,15 @@
         <!-- Add a container for kelas -->
        <div style="margin: 20px;">
         <div class="row" id="resultKelas">
+            <h3>List of Class</h3>
             <?php foreach ($classes as $class) : ?>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="<?= base_url('assets/blue.jpg'); ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?= esc($class['class_name']); ?></h5>
                             <p class="card-text"><?= esc($class['class_description']); ?></p>
+                            <br>
                             <a href="<?php echo site_url('student/class/detail/'. $class['id']) ?>" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
