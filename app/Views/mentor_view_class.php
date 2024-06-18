@@ -24,7 +24,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #002979;
+            background-color: #4829B2;
             color: #fff;
             padding-top: 40px;
             padding-right: 20px;
@@ -283,6 +283,9 @@
                         <button class="btn btn-primary" type="button" onclick="searchKelas()">Cari</button>
                     </div>
                 </form>
+            </div>
+            <div class="container mt-4" style="width: 20%">
+                <a href="<?php echo site_url('class/create'); ?>" class="btn btn-primary" style="background-color: #4829B2; color: #ffffff;">+ Add Class</a>
             </div>
 
             <div class="user-info">
