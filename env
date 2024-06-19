@@ -30,13 +30,13 @@
 # DATABASE
 #--------------------------------------------------------------------
 
-database.default.hostname = uk8.h.filess.io
-database.default.database = elearning_themselves
-database.default.username = elearning_themselves
-database.default.password = 6dc286d610c585052620f3c053f804d89dc5abad
-database.default.DBDriver = MySQLi
-database.default.DBPrefix =
-database.default.port = 3307
+database_default_hostname = uk8.h.filess.io
+database_default_database = elearning_themselves
+database_default_username = elearning_themselves
+database_default_password = 6dc286d610c585052620f3c053f804d89dc5abad
+database_default_DBDriver = MySQLi
+database_default_DBPrefix =
+database_default_port = 3307
 
 # If you use MySQLi as tests, first update the values of Config\Database::$tests.
 # database.tests.hostname = localhost
