@@ -32,6 +32,8 @@ $routes->get('class/detail/(:num)', 'ClassController::detailClass/$1');
 $routes->get('class/update/(:num)', 'ClassController::updateClass/$1'); 
 $routes->post('class/update/(:num)', 'ClassController::saveUpdate/$1'); 
 $routes->get('class/delete/(:num)', 'ClassController::delete/$1'); 
+$routes->get('class/search', 'ClassController::searchClass');
+$routes->get('class/enroll/(:num)', 'ClassController::enrollClass/$1');
 // $routes->post('class/update/', 'ClassController::update'); 
 
 

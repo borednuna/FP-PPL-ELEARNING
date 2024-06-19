@@ -19,6 +19,19 @@ class ClassModel extends Model
         }
     }
 
+    public function getClassByName($class_name)
+    {
+        $query = "SELECT * FROM class WHERE class_name LIKE '%" . $class_name . "%'";
+
+        return $this->db->query($query)->getResultArray();
+    }
+
+    public function getClassByStudentId($student_id)
+    {
+        $query = "SELECT * FROM class_user JOIN class ON class_user.class_id = class.id WHERE class_user.user_id = " . $student_id;
+        return $this->db->query($query)->getResultArray();
+    }
+
     public function getClassByMentor($mentor_id)
     {
         return $this->where(['mentor_id' => $mentor_id])->findAll();

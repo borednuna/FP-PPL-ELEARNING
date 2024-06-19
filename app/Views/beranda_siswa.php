@@ -228,12 +228,12 @@
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
                     </span>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?php echo site_url('student/class'); ?>">Kelas</a>
                     </span>
-                </li> -->
+                </li>
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
@@ -256,14 +256,13 @@
     <div style="margin-left: 270px;">
         <div class="d-flex justify-content-between align-items-center">
             <div class="container mt-4" style="width: 81%;">
-                <form class="form-inline">
+                <form class="form-inline" method="get" action="<?php echo site_url('class/search'); ?>">
                     <div class="d-flex justify-content-between align-items-center">
-                        <input class="form-control" type="search" placeholder="Cari kelas sekarang..." id="searchInput" aria-label="Search">
-                        <button class="btn btn-primary" type="button" onclick="searchPelajaran()">Cari</button>
+                        <input type="text" class="form-control" name="kelas" placeholder="Cari kelas ..." required><br>
+                        <button type="submit" class="btn btn-primary">Cari</button>
                     </div>
                 </form>
             </div>
-
             <div class="user-info">
                 <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>

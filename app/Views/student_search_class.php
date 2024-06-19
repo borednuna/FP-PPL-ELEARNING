@@ -213,7 +213,7 @@
 </head>
 
 <body>
-    <header>
+<header>
         <div class="sidebar">
             <div style="padding-bottom: 40px; text-align: center; color: white;">
                 <a class="sidebar-brand" href="#">
@@ -228,58 +228,75 @@
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
                     </span>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./guru_kelas') ?>">Kelas</a>
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?php echo site_url('student/class'); ?>">Kelas</a>
+                    </span>
+                </li> -->
+                <li class="nav-item">
+                    <span style="display: flex; align-items: center; padding-left: 20px;">
+                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('assignments/details/4') ?>">Detail Tugas</a>
                     </span>
                 </li>
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal_guru') ?>">Jadwal</a>
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('notifications/read') ?>">Notifikasi</a>
                     </span>
                 </li>
                 <li class="nav-item1 text-center">
-                    <a class="nav-link active" aria-current="page" href="<?= base_url('./login') ?>">Keluar</a>
+                    <a class="nav-link active" aria-current="page" href="<?php echo site_url('auth/logout'); ?>">Keluar</a>
                 </li>
             </ul>
         </div>
     </header>
 
     <div style="margin-left: 270px;">
-        <div class="d-flex justify-content-between align-items-center">
-        <div class="container mt-4" style="width: 70%">
+        <div class="d-flex justify-content-between align-items-center" style=" padding-bottom:10px;">
+            <div class="container mt-4" style="width: 81%;">
                 <form class="form-inline">
                     <div class="d-flex justify-content-between align-items-center">
                         <input class="form-control" type="search" placeholder="Cari kelas sekarang..." id="searchInput" aria-label="Search">
-                        <button class="btn btn-primary" type="button" onclick="searchPelajaran()" style="background-color: #4829B2; color: #ffffff;">Cari</button>
+                        <button class="btn btn-primary" type="button" onclick="searchKelas()">Cari</button>
                     </div>
                 </form>
+            </div>
+            <div class="container mt-4" style="width: 20%">
+                <a href="<?php echo site_url('class/create'); ?>" class="btn btn-primary" style="background-color: #4829B2; color: #ffffff;">+ Add Class</a>
             </div>
 
             <div class="user-info">
                 <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>
                     <div class="user-name">Melanie Refman</div>
-                    <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
+                    <div class="user-name1" style="font-size: 13px;">Mentor</div>
                 </span>
             </div>
         </div>
 
-        <!-- Add separate containers for pelajaran and tugas -->
-        <div class="result-container">
-            <img src="./assets/welcome_guru.png" class="img-fluid" style="padding-bottom: 40px;"><br>
-            <div class="row" id="resultPelajaran"></div>
-        </div>
-        <h1>Ini Daftar Materi</h1>
-        <div class="card shadow d-flex flex-column" style="align-items: flex-start;">
-             <div class="card-body img-fuild">
-                <p class="card-title">Aljabar apa itu</p>
-                    <h6 class="card-title">Gak tau males</h6>
-            </div>
+        <!-- Add a container for kelas -->
+       <div style="margin: 20px;">
+        <div class="row" id="resultKelas">
+            <h3>List of Class</h3>
+            <?php foreach ($class as $classes) : ?>
+                <div class="col-md-3 mb-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="<?= base_url('assets/blue.jpg'); ?>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= esc($classes['class_name']); ?></h5>
+                            <p class="card-text"><?= esc($classes['class_description']); ?></p>
+                            <br>
+                            <a href="<?php echo site_url('class/enroll/'. $classes['id']) ?>" class="btn btn-primary">Daftar</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 

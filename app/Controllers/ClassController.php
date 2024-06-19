@@ -3,15 +3,18 @@
 namespace App\Controllers;
 
 use App\Models\ClassModel;
+use App\Models\Notification;
 use PhpParser\Node\Expr\FuncCall;
 
 class ClassController extends BaseController
 {
     protected $ClassModel;
+    protected $NotificationModel;
 
     public function __construct()
     {
         $this->ClassModel = new ClassModel();
+        $this->NotificationModel = new Notification();
     }
 
     public function index()
@@ -50,6 +53,25 @@ class ClassController extends BaseController
 
         $this->ClassModel->insertClass($data);
         return redirect()->to("class");
+    }
+
+    public function searchClass()
+    {
+        $class_name = $this->request->getPost('kelas');
+        $class = $this->ClassModel->getClassByName($class_name);
+
+        $data = [
+            'class' => $class
+        ];
+
+        return view('student_search_class', $data);
+    }
+
+    public function enrollClass($class_id)
+    {
+        $user_id = $this->session->get('id');
+        $this->NotificationModel->subscribe($class_id, $user_id);
+        return view('beranda_siswa');
     }
 
    public function view($id = null)
@@ -139,9 +161,11 @@ class ClassController extends BaseController
     //student
     public function studentClass()
     {
+        $user_id = $this->session->get('id');
+        $class = $this->ClassModel->getClassByStudentId($user_id);
         $data = [
             'title' => 'Student Class',
-            'classes' => $this->ClassModel->getClass()
+            'classes' => $class
         ];
 
         return view('student_class', $data);
