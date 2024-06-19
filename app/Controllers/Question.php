@@ -74,4 +74,11 @@ class Question extends BaseController
 
         return redirect()->to('question/create')->with('success', 'Question has been added successfully!');
     }
+
+    public function delete($id)
+    {
+        $this->questionModel->deleteQuestion($id);
+
+        return redirect()->to('/class')->with('success', 'Question has been deleted successfully!');
+    }
 }

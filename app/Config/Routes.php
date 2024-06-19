@@ -68,3 +68,4 @@ $routes->get('exams/details/(:num)', 'Exam::detail/$1');
 $routes->get('question/create', 'Question::create');
 $routes->post('question/store', 'Question::store');
 $routes->get('question/(:num)', 'Question::index/$1'); 
+$routes->get('question/delete/(:num)', 'Question::delete/$1');

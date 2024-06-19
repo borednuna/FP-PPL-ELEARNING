@@ -355,6 +355,9 @@
                     </div>
                 </form>
             </div>
+            <div class="container mt-4" style="width: 20%">
+                <a href="<?= base_url('/question/create/') ?>" class="btn btn-primary" style="background-color: #4829B2; color: #ffffff;">+ Add Question</a>
+            </div>
 
             <div class="user-info">
                 <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
@@ -364,6 +367,11 @@
                 </span>
             </div>
         </div>
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success">
+                <?= session()->getFlashdata('success') ?>
+            </div>
+        <?php endif; ?>
         <h1 class="mt-4"><?= $title ?></h1>
         <div class="row">
             <?php foreach ($questions as $question) : ?>
@@ -376,8 +384,8 @@
                             <p class="card-text"><?= $question['option_c'] ?></p>
                             <p class="card-text"><?= $question['option_d'] ?></p>
                             <p class="card-text"><?= $question['option_e'] ?></p>
-                            <a href="<?= base_url('question/' . $question['id']) ?>" class="btn btn-primary mt-auto">Detail</a>
-                            
+                            <p class="card-text mt-auto"><strong>Correct answer: </strong><?= $question['correct_answer'] ?></p> 
+                            <a href="<?= site_url('question/delete/' . $question['id']) ?>" class="btn btn-danger mt-2">Delete</a>  
                         </div>
                     </div>
                 </div>

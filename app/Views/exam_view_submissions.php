@@ -256,14 +256,13 @@
                 <?php foreach ($questions as $question): ?>
                     <div class="question-container">
                         <p><?= $question['question'] ?></p>
-                        <div class="options-container"></div>
+                        <div class="options-container">
                             <input type="hidden" name="answers[<?= $question['id'] ?>]" value="<?= $question['correct_answer'] ?>">
                             <input type="radio" name="selected_option[<?= $question['id'] ?>]" value="A"> <?= $question['option_a'] ?><br/>
                             <input type="radio" name="selected_option[<?= $question['id'] ?>]" value="B"> <?= $question['option_b'] ?><br/>
                             <input type="radio" name="selected_option[<?= $question['id'] ?>]" value="C"> <?= $question['option_c'] ?><br/>
                             <input type="radio" name="selected_option[<?= $question['id'] ?>]" value="D"> <?= $question['option_d'] ?><br/>
                             <input type="radio" name="selected_option[<?= $question['id'] ?>]" value="E"> <?= $question['option_e'] ?><br/>
-                            <br/>
                         </div>
                     </div>
                 <?php endforeach; ?>
