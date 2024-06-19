@@ -176,7 +176,14 @@ class ClassController extends BaseController
 
         return view('student_class', $data);
     }
+
     public function studentClassDetail($id){
-        return view('student_detail_class', [$id]);
+        $exams = $this->ExamModel->getExamByClass($id);
+        $data = [
+            'exams' => $exams,
+            'id' => $id
+        ];
+
+        return view('student_detail_class', $data);
     }
 }

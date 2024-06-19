@@ -12,18 +12,21 @@
             margin: 0;
             padding-top: 20px;
             font-family: Inter, sans-serif;
-            overflow: hidden;
         }
 
+        /* Sidebar styling */
         .sidebar {
             height: 100vh;
             width: 250px;
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #4829B2;
+            background-color: #002979;
             color: #fff;
-            padding: 20px;
+            padding-top: 40px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            padding-left: 20px;
         }
 
         .sidebar-brand {
@@ -34,7 +37,7 @@
 
         .sidebar-nav {
             list-style: none;
-            padding-left: 0;
+            padding-left: 20px;
         }
 
         .sidebar-nav .nav-item {
@@ -42,11 +45,11 @@
         }
 
         .sidebar-nav .nav-item a {
-            color: #fff;
-            text-decoration: none;
+            font-family: 'Inter', sans-serif;
         }
 
         .nav-item1 {
+            list-style: none;
             padding-top: 360px;
         }
 
@@ -55,7 +58,7 @@
             padding: 0.5rem 1rem;
             text-decoration: none;
             color: red;
-            background-color: #F1E8F6;
+            background-color: white;
             border-radius: 10px;
         }
 
@@ -68,7 +71,9 @@
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            padding: 30px 30px 0 0;
+            padding: 30px;
+            padding-bottom: 0px;
+
         }
 
         .user-info img {
@@ -83,86 +88,125 @@
             color: black;
         }
 
-        .assignment-card {
+        .container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            /* Center the image */
+        }
+
+        .desktop-1-Mss {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .auto-group-39fb-PpZ {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .vector-zxm {
+            width: 50px;
+            height: auto;
+        }
+
+        .navbar-43-WRK {
+            display: flex;
+            align-items: center;
+        }
+
+        .auto-group-zq2d-y41 {
+            display: flex;
+            align-items: center;
+        }
+
+        .frame-63-hVo {
+            display: flex;
+            align-items: center;
+        }
+
+        .frame-64-3Zf {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .raphael-books-XNM {
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .media-ilmu-pcM,
+        .catalog-JGd,
+        .delivery-R6M,
+        .delivery-LUD {
+            margin: 0;
+            padding: 0;
+            margin-right: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .frame-65-5Au {
+            display: flex;
+            align-items: center;
+        }
+
+        .ellipse-1-Nvh {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin-right: 10px;
+        }
+
+        .delivery-1Ts {
+            margin: 0;
+            padding: 0;
+            margin-right: 10px;
+            color: #fff;
+        }
+
+        .iconamoon-arrow-up-2-light-jem {
+            width: 20px;
+            height: auto;
+        }
+
+        .navbar-nav .nav-link {
+            outline: none;
+        }
+
+        .navbar-nav .nav-item.active a {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .card {
             height: 100%;
-            width: 90%;
             display: flex;
             flex-direction: column;
-            padding: 20px;
-            margin: 20px;
-            border-radius: 7px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            background-color: #fff;
         }
 
-        h1 {
-            font-size: 26px;
-            font-weight: 700;
-            color: #333;
-        }
-
-        h2 {
-            margin: 20px 0;
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        textarea.form-control {
+        .card img {
+            flex-grow: 1;
+            object-fit: cover;
+            height: 100%;
             width: 100%;
-            height: 150px;
-            resize: both;
         }
 
-        .custom-button {
+        .card-body p.card-text {
             display: inline-block;
-            padding: 10px 20px;
-            color: white;
-            background-color: #28a745;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            width: 100%;
-            margin: 10px 0;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            color: #ffffff;
+            background-color: #32CA4D;
+            /* Set text color to white */
         }
 
-        .custom-button:hover {
-            background-color: #218838;
-        }
-
-        /* Custom table styling */
-        .assignment table {
-            width: 80%;
-            border-collapse: collapse;
-        }
-
-        .assignment th,
-        .assignment td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        .assignment th {
-            background-color: #4829B2;
-            color: #fff;
-            text-align: left;
-        }
-
-        .assignment tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .assignment tr:hover {
-            background-color: #ddd;
-        }
-
-        .assignment td a.btn {
-            padding: 5px 10px;
-            font-size: 14px;
-        }
     </style>
 </head>
 
@@ -203,31 +247,28 @@
 
         <!-- table -->
         <div class="container mt-4">
-            <div class="assignment" style="margin-top: 20px;">
-                <h1>Pengumpulan Ujian</h1>
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>Siswa</th>
-                            <th>Tanggal Pengumpulan</th>
-                            <th>Jawaban Benar</th>
-                            <th>Jawaban Salah</th>
-                            <th>Nilai</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($submissions as $submission) : ?>
-                            <tr>
-                                <td><?= $submission['username'] ?></td>
-                                <td><?= $submission['date_submitted'] ?></td>
-                                <td><?= $submission['correct_answer'] ?></td>
-                                <td><?= $submission['wrong_answer'] ?></td>
-                                <td><?= $submission['score'] ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+        <h1><?= $exam['name'] ?></h1>
+            <p>Class ID: <?= $exam['class_id'] ?></p>
+            <p>Start Time: <?= $exam['start_time'] ?></p>
+            <p>End Time: <?= $exam['end_time'] ?></p>
+
+            <form action="<?= site_url('exam/submit/' . $exam['id']) ?>" method="post">
+                <?php foreach ($questions as $question): ?>
+                    <div class="question-container">
+                        <p><?= $question['question'] ?></p>
+                        <div class="options-container"></div>
+                            <input type="hidden" name="answers[<?= $question['id'] ?>]" value="<?= $question['correct_answer'] ?>">
+                            <input type="radio" name="selected_option[<?= $question['id'] ?>]" value="A"> <?= $question['option_a'] ?><br/>
+                            <input type="radio" name="selected_option[<?= $question['id'] ?>]" value="B"> <?= $question['option_b'] ?><br/>
+                            <input type="radio" name="selected_option[<?= $question['id'] ?>]" value="C"> <?= $question['option_c'] ?><br/>
+                            <input type="radio" name="selected_option[<?= $question['id'] ?>]" value="D"> <?= $question['option_d'] ?><br/>
+                            <input type="radio" name="selected_option[<?= $question['id'] ?>]" value="E"> <?= $question['option_e'] ?><br/>
+                            <br/>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </div>
 </body>

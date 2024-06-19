@@ -229,9 +229,16 @@
                     </span>
                 </li>
                 <li class="nav-item">
+                <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="<?= base_url('assets/kelas.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?php echo site_url('student/class'); ?>">Kelas</a>
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <span style="display: flex; align-items: center; padding-left: 20px;">
+                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('assignments/details/4') ?>">Detail Tugas</a>
                     </span>
                 </li>
                 <li class="nav-item">

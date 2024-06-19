@@ -62,4 +62,9 @@ class ExamSubmissionModel extends Model
     {
         return $this->where(['user_id' => $user_id])->findAll();
     }
+
+    public function saveSubmission($data)
+    {
+        $this->insert($data);
+    }
 }
