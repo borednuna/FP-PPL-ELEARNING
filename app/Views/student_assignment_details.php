@@ -323,7 +323,7 @@
     <div style="margin-left: 270px;">
         <div class="d-flex justify-content-between align-items-center">
             <div class="container mt-4" style="width: 81%;">
-                <form class="form-inline" method="get" action="<?php echo site_url('class/search'); ?>">
+            <form class="form-inline" method="get" action="<?php echo site_url('class/search'); ?>">
                     <div class="d-flex justify-content-between align-items-center">
                         <input type="text" class="form-control" name="kelas" placeholder="Cari kelas ..." required><br>
                         <button type="submit" class="btn btn-primary">Cari</button>

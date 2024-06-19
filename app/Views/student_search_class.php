@@ -250,7 +250,7 @@
     <div style="margin-left: 270px;">
         <div class="d-flex justify-content-between align-items-center">
             <div class="container mt-4" style="width: 81%;">
-                <form class="form-inline" method="get" action="<?php echo site_url('class/search'); ?>">
+            <form class="form-inline" method="get" action="<?php echo site_url('class/search'); ?>">
                     <div class="d-flex justify-content-between align-items-center">
                         <input type="text" class="form-control" name="kelas" placeholder="Cari kelas ..." required><br>
                         <button type="submit" class="btn btn-primary">Cari</button>
@@ -279,10 +279,10 @@
                             <p class="card-text"><?= esc($classes['class_description']); ?></p>
                             <br>
                             <?php if (session()->get('role') == 'student') : ?>
-                                <?php if ($classes['class_is_joined']) : ?>
-                                    <a href="<?php echo site_url('class/enroll/' . $classes['id']) ?>" class="btn btn-primary">Daftar</a>
-                                <?php else : ?>
+                                <?php if ($classes['class_is_joined'] == 'true') : ?>
                                     <a class="btn btn-warning">Sudah daftar</a>
+                                <?php else : ?>
+                                    <a href="<?php echo site_url('class/enroll/' . $classes['id']) ?>" class="btn btn-primary">Daftar</a>
                                 <?php endif; ?>
                             <?php endif; ?>
                         </div>
