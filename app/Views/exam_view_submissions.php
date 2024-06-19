@@ -88,6 +88,10 @@
             color: black;
         }
 
+        .container {
+            margin-left: 20rem;
+        }
+
         .container img {
             max-width: 100%;
             height: auto;
@@ -211,7 +215,7 @@
 </head>
 
 <body>
-<header>
+<header >
         <div class="sidebar">
             <div style="padding-bottom: 40px; text-align: center; color: white;">
                 <a class="sidebar-brand" href="#">
@@ -246,7 +250,7 @@
     </header>
 
         <!-- table -->
-        <div class="container mt-4">
+    <div class="container mt-4">
         <h1><?= $exam['name'] ?></h1>
             <p>Class ID: <?= $exam['class_id'] ?></p>
             <p>Start Time: <?= $exam['start_time'] ?></p>
