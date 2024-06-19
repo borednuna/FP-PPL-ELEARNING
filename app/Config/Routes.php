@@ -57,7 +57,7 @@ $routes->get('notifications/read', 'NotificationController::readNotifications');
 
 $routes->get('class/create', 'ClassController::create');
 
-$routes->get('exams/submissions/(:num)', 'ExamController::allExamSubmissions/$1');
+$routes->get('exams/submissions/(:num)', 'Exam::getExamSubmissionsByExam/$1');
 $routes->get('exams/create/(:num)', 'Exam::create/$1');
 $routes->post('exams/create/(:num)', 'Exam::save/$1');
 $routes->get('exams/delete/(:num)', 'Exam::delete/$1');

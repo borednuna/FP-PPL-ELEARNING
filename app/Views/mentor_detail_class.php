@@ -181,10 +181,10 @@
     <div style="margin-left: 270px;">
         <div class="d-flex justify-content-between align-items-center">
             <div class="container mt-4" style="width: 81%;">
-                <form class="form-inline">
+            <form class="form-inline" method="get" action="<?php echo site_url('class/search'); ?>">
                     <div class="d-flex justify-content-between align-items-center">
-                        <input class="form-control" type="search" placeholder="Cari kelas sekarang..." id="searchInput" aria-label="Search">
-                        <button class="btn btn-primary" type="button" onclick="searchPelajaran()">Cari</button>
+                        <input type="text" class="form-control" name="kelas" placeholder="Cari kelas ..." required><br>
+                        <button type="submit" class="btn btn-primary">Cari</button>
                     </div>
                 </form>
             </div>
@@ -220,6 +220,7 @@
                         <a class="btn btn-sm btn-primary">Update</a>
                         <a href="<?= base_url('exams/delete/' . $exam['id']); ?>" class="btn btn-sm btn-danger">Delete</a>
                         <a href="<?= base_url('question/' . $exam['id']); ?>" class="btn btn-sm btn-warning">Manage Questions</a>
+                        <a href="<?= base_url('exams/submissions/' . $exam['id']); ?>" class="btn btn-sm btn-info">View Submissions</a>
                     </div>
                     </div>
                 </div>
