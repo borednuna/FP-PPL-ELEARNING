@@ -55,6 +55,19 @@ class Exam extends BaseController
         return view($viewName, $data);
     }
 
+    public function getExamSubmissionsByExam($exam_id)
+    {
+        $exam = $this->examModel->getExam($exam_id);
+        $submissions = $this->examSubmissionModel->getExamSubmissionByExam($exam_id);
+
+        $data = [
+            'exam' => $exam,
+            'submissions' => $submissions
+        ];
+
+        return view('mentor_view_exam_submissions', $data);
+    }
+
     public function create($class_id)
     {
         $data = [

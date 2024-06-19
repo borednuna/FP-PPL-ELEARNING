@@ -224,14 +224,17 @@
         <!-- table -->
         <div class="container mt-4">
             <div class="assignment" style="margin-top: 20px;">
-                <h1>Pengumpulan Tugas</h1>
+                <h1>Exam Submissions</h1>
+                <h6 class="card-title"><?= esc($exam['name']); ?></h6>
+                <p class="card-title">Start time : <?= esc($exam['start_time']); ?>, End time : <?= esc($exam['end_time']); ?></p><br/>
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Siswa</th>
-                            <th>Tanggal Pengumpulan</th>
-                            <th>Nilai</th>
-                            <th>Action</th>
+                            <th>Student Name</th>
+                            <th>Submission Time</th>
+                            <th>Correct</th>
+                            <th>Wrong</th>
+                            <th>Score</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -239,16 +242,9 @@
                         <tr>
                             <td><?= $submission['username'] ?></td>
                             <td><?= $submission['date_submitted'] ?></td>
-                            <td>
-                                <form action="<?= base_url('assignments/update_grade') ?>" method="post" class="d-inline">
-                                    <input type="hidden" name="submission_id" value="<?= esc($submission['id']) ?>">
-                                    <input type="number" placeholder="Nilai belum diberikan" name="grade" value="<?= $submission['grade'] ?>" class="form-control d-inline w-auto">
-                                    <button type="submit" class="btn btn-success btn-sm">Update</button>
-                                </form>
-                            </td>
-                            <td>
-                            <a href="<?= base_url('uploads/' . $submission['uploaded_file']) ?>" class="btn btn-danger btn-sm" download>Unduh file</a>
-                            </td>
+                            <td><?= $submission['correct_answer'] ?></td>
+                            <td><?= $submission['wrong_answer'] ?></td>
+                            <td><?= $submission['score'] ?></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

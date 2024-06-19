@@ -278,7 +278,13 @@
                             <h5 class="card-title"><?= esc($classes['class_name']); ?></h5>
                             <p class="card-text"><?= esc($classes['class_description']); ?></p>
                             <br>
-                            <a href="<?php echo site_url('class/enroll/'. $classes['id']) ?>" class="btn btn-primary">Daftar</a>
+                            <?php if (session()->get('role') == 'student') : ?>
+                                <?php if ($classes['class_is_joined']) : ?>
+                                    <a href="<?php echo site_url('class/enroll/' . $classes['id']) ?>" class="btn btn-primary">Daftar</a>
+                                <?php else : ?>
+                                    <a class="btn btn-warning">Sudah daftar</a>
+                                <?php endif; ?>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

@@ -19,11 +19,24 @@ class ClassModel extends Model
         }
     }
 
-    public function getClassByName($class_name)
+    public function getClassByName($class_name, $user_id)
     {
-        $query = "SELECT * FROM class WHERE class_name LIKE '%" . $class_name . "%'";
+        $query = $this->db->query("SELECT * FROM class WHERE class_name LIKE ?", ["%$class_name%"]);
+        $data_array = $query->getResultArray();
 
-        return $this->db->query($query)->getResultArray();
+        foreach ($data_array as &$data) {
+            $data['class_is_joined'] = false;
+
+            $query = $this->db->query("SELECT * FROM class_user WHERE class_id = ? AND user_id = ?", [$data['id'], $user_id]);
+            $class_user = $query->getRowArray();
+
+            if ($class_user) {
+                $data['class_is_joined'] = true;
+            }
+        }
+
+        unset($data);
+        return $data_array;
     }
 
     public function getClassByStudentId($student_id)

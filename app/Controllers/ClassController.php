@@ -4,17 +4,20 @@ namespace App\Controllers;
 
 use App\Models\ClassModel;
 use App\Models\ExamModel;
+use App\Models\Notification;
 use PhpParser\Node\Expr\FuncCall;
 
 class ClassController extends BaseController
 {
     protected $ClassModel;
+    protected $NotificationModel;
     protected $ExamModel;
 
     public function __construct()
     {
         $this->ClassModel = new ClassModel();
         $this->ExamModel = new ExamModel();
+        $this->NotificationModel = new Notification();
     }
 
     public function index()
@@ -57,8 +60,9 @@ class ClassController extends BaseController
 
     public function searchClass()
     {
+        $user_id = $this->session->get('id');
         $class_name = $this->request->getPost('kelas');
-        $class = $this->ClassModel->getClassByName($class_name);
+        $class = $this->ClassModel->getClassByName($class_name, $user_id);
 
         $data = [
             'class' => $class
