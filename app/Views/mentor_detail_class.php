@@ -144,35 +144,35 @@
 </head>
 
 <body>
-    <header>
+<header>
         <div class="sidebar">
             <div style="padding-bottom: 40px; text-align: center; color: white;">
                 <a class="sidebar-brand" href="#">
-                    <img src="./assets/book.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    <img src="<?= base_url('assets/book.png'); ?>" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                     E-learningApp
                 </a>
             </div>
             <ul class="sidebar-nav">
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/beranda.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <img src="<?= base_url('assets/beranda.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
                     </span>
                 </li>
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./guru_kelas') ?>">Kelas</a>
+                        <img src="<?= base_url('assets/kelas.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('class') ?>">Kelas</a>
                     </span>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal_guru') ?>">Jadwal</a>
+                        <img src="<?= base_url('assets/jadwal.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('notifications/') ?>">Notifikasi</a>
                     </span>
-                </li>
+                </li> -->
                 <li class="nav-item1 text-center">
-                    <a class="nav-link active" aria-current="page" href="<?= base_url('./login') ?>">Keluar</a>
+                    <a class="nav-link active" aria-current="page" href="<?php echo site_url('auth/logout'); ?>">Keluar</a>
                 </li>
             </ul>
         </div>
@@ -180,23 +180,20 @@
 
     <div style="margin-left: 270px;">
         <div class="d-flex justify-content-between align-items-center">
-        <div class="container mt-4" style="width: 70%">
+            <div class="container mt-4" style="width: 81%;">
                 <form class="form-inline">
                     <div class="d-flex justify-content-between align-items-center">
                         <input class="form-control" type="search" placeholder="Cari kelas sekarang..." id="searchInput" aria-label="Search">
-                        <button class="btn btn-primary" type="button" onclick="searchPelajaran()" style="background-color: #4829B2; color: #ffffff;">Cari</button>
+                        <button class="btn btn-primary" type="button" onclick="searchPelajaran()">Cari</button>
                     </div>
                 </form>
             </div>
-            <div class="container mt-4" style="width: 20%">
-                <a href="<?= base_url('./add_section') ?>" class="btn btn-primary" style="background-color: #4829B2; color: #ffffff;">+ Add Section</a>
-            </div>
 
             <div class="user-info">
-                <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
+                <img src="<?= base_url('assets/ellipse-1-bg-eyb.png'); ?>" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>
-                    <div class="user-name">Melanie Refman</div>
-                    <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
+                    <div class="user-name"><?php echo session()->get('username'); ?></div>
+                    <div class="user-name1" style="font-size: 13px;">Mentor</div>
                 </span>
             </div>
         </div>
