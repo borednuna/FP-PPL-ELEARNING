@@ -71,10 +71,10 @@ class Database extends Config
 
         $this->default = [
             'DSN'          => '',
-            'hostname'     => env('database.default.hostname', 'localhost'),
-            'username'     => env('database.default.username', 'root'),
-            'password'     => env('database.default.password', ''),
-            'database'     => env('database.default.database', 'elearning'),
+            'hostname'     => env('database_default_hostname', 'localhost'),
+            'username'     => env('database_default_username', 'root'),
+            'password'     => env('database_default_password', ''),
+            'database'     => env('database_default_database', 'elearning'),
             'DBDriver'     => 'MySQLi',
             'DBPrefix'     => '',
             'pConnect'     => false,
@@ -86,7 +86,7 @@ class Database extends Config
             'compress'     => false,
             'strictOn'     => false,
             'failover'     => [],
-            'port'         => (int) env('database.default.port', 3306),
+            'port'         => (int) env('database_default_port', 3306),
             'numberNative' => false,
             'dateFormat'   => [
                 'date'     => 'Y-m-d',
