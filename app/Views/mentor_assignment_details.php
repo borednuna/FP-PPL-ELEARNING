@@ -136,54 +136,42 @@
 </head>
 
 <body>
-    <nav class="sidebar">
-        <div style="padding-bottom: 40px; text-align: center; color: white;">
-            <a class="sidebar-brand" href="#">
-                <img src="./assets/book.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                E-learningApp
-            </a>
+<header>
+        <div class="sidebar">
+            <div style="padding-bottom: 40px; text-align: center; color: white;">
+                <a class="sidebar-brand" href="#">
+                    <img src="<?= base_url('assets/book.png'); ?>" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    E-learningApp
+                </a>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <span style="display: flex; align-items: center; padding-left: 20px;">
+                        <img src="<?= base_url('assets/beranda.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <span style="display: flex; align-items: center; padding-left: 20px;">
+                        <img src="<?= base_url('assets/kelas.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('class') ?>">Kelas</a>
+                    </span>
+                </li>
+                <!-- <li class="nav-item">
+                    <span style="display: flex; align-items: center; padding-left: 20px;">
+                        <img src="<?= base_url('assets/jadwal.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('notifications/') ?>">Notifikasi</a>
+                    </span>
+                </li> -->
+                <li class="nav-item1 text-center">
+                    <a class="nav-link active" aria-current="page" href="<?php echo site_url('auth/logout'); ?>">Keluar</a>
+                </li>
+            </ul>
         </div>
-        <ul class="sidebar-nav">
-            <li class="nav-item">
-                <span style="display: flex; align-items: center; padding-left: 20px;">
-                    <img src="./assets/beranda.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
-                </span>
-            </li>
-            <li class="nav-item">
-                <span style="display: flex; align-items: center; padding-left: 20px;">
-                    <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./kelas') ?>">Kelas</a>
-                </span>
-            </li>
-            <li class="nav-item">
-                <span style="display: flex; align-items: center; padding-left: 20px;">
-                    <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal') ?>">Jadwal</a>
-                </span>
-            </li>
-            <li class="nav-item">
-                <span style="display: flex; align-items: center; padding-left: 20px;">
-                    <img src="./assets/nilai.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./nilai') ?>">Nilai</a>
-                </span>
-            </li>
-            <li class="nav-item">
-                <span style="display: flex; align-items: center; padding-left: 20px;">
-                    <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
-                </span>
-            </li>
-        </ul>
-        <ul class="nav-item1">
-            <a href="<?= base_url('logout') ?>">
-                Keluar
-            </a>
-        </ul>
-    </nav>
+    </header>
 
-    <div class="container" style="margin-left: 270px;">
-        <header class="d-flex justify-content-between align-items-center">
+    <div style="margin-left: 270px;">
+        <div class="d-flex justify-content-between align-items-center">
             <div class="container mt-4" style="width: 81%;">
                 <form class="form-inline">
                     <div class="d-flex justify-content-between align-items-center">
@@ -194,13 +182,13 @@
             </div>
 
             <div class="user-info">
-                <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
+                <img src="<?= base_url('assets/ellipse-1-bg-eyb.png'); ?>" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>
                     <div class="user-name"><?php echo session()->get('username'); ?></div>
-                    <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
+                    <div class="user-name1" style="font-size: 13px;">Mentor</div>
                 </span>
             </div>
-        </header>
+        </div>
 
         <?php if (isset($assignment)): ?>
             <?php foreach ([$assignment] as $assignmentItem): ?>

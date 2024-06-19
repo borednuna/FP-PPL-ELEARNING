@@ -240,35 +240,35 @@
 </head>
 
 <body>
-    <header>
+<header>
         <div class="sidebar">
             <div style="padding-bottom: 40px; text-align: center; color: white;">
                 <a class="sidebar-brand" href="#">
-                    <img src="./assets/book.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    <img src="<?= base_url('assets/book.png'); ?>" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                     E-learningApp
                 </a>
             </div>
             <ul class="sidebar-nav">
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/beranda.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./') ?>">Beranda</a>
+                        <img src="<?= base_url('assets/beranda.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
                     </span>
                 </li>
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Kelas</a>
+                        <img src="<?= base_url('assets/kelas.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('class') ?>">Kelas</a>
                     </span>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal') ?>">Jadwal</a>
+                        <img src="<?= base_url('assets/jadwal.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('notifications/') ?>">Notifikasi</a>
                     </span>
-                </li>
+                </li> -->
                 <li class="nav-item1 text-center">
-                    <a class="nav-link active" aria-current="page" href="<?= base_url('./login') ?>">Keluar</a>
+                    <a class="nav-link active" aria-current="page" href="<?php echo site_url('auth/logout'); ?>">Keluar</a>
                 </li>
             </ul>
         </div>
@@ -304,7 +304,7 @@
             <?php foreach ($class as $classes) : ?>
                 <div class="col-md-3 mb-3">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?= base_url('assets/blue.jpg'); ?>" alt="Card image cap">
+                        <img class="card-img-top" src="<?= base_url('assets/mtk.png'); ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?= esc($classes['class_name']); ?></h5>
                             <p class="card-text"><?= esc($classes['class_description']); ?></p>

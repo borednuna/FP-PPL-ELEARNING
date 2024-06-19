@@ -217,32 +217,26 @@
         <div class="sidebar">
             <div style="padding-bottom: 40px; text-align: center; color: white;">
                 <a class="sidebar-brand" href="#">
-                    <img src="./assets/book.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    <img src="<?= base_url('assets/book.png'); ?>" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                     E-learningApp
                 </a>
             </div>
             <ul class="sidebar-nav">
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/beranda.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <img src="<?= base_url('assets/beranda.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
                     </span>
                 </li>
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <img src="<?= base_url('assets/kelas.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?php echo site_url('student/class'); ?>">Kelas</a>
                     </span>
                 </li>
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('assignments/details/4') ?>">Detail Tugas</a>
-                    </span>
-                </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <img src="<?= base_url('assets/jadwal.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('notifications/read') ?>">Notifikasi</a>
                     </span>
                 </li>
@@ -264,7 +258,7 @@
                 </form>
             </div>
             <div class="user-info">
-                <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
+                <img src="<?= base_url('assets/mtk.png'); ?>" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>
                     <div class="user-name"><?php echo session()->get('username'); ?></div>
                     <div class="user-name1" style="font-size: 13px;">Kelas 12</div>

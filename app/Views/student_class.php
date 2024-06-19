@@ -301,7 +301,7 @@
             <?php foreach ($classes as $class) : ?>
                 <div class="col-md-3 mb-3">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?= base_url('assets/blue.jpg'); ?>" alt="Card image cap">
+                        <img class="card-img-top" src="<?= base_url('assets/mtk.png'); ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?= esc($class['class_name']); ?></h5>
                             <p class="card-text"><?= esc($class['class_description']); ?></p>
