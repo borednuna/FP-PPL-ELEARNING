@@ -30,28 +30,23 @@ $routes->get('class/create', 'ClassController::create');
 $routes->post('class/create', 'ClassController::saveCreate');
 $routes->get('class/detail/(:num)', 'ClassController::detailClass/$1'); 
 $routes->get('class/update/(:num)', 'ClassController::updateClass/$1'); 
-<<<<<<< HEAD
 $routes->post('class/update/(:num)', 'ClassController::saveUpdate/$1');
 $routes->get('class/delete/(:num)', 'ClassController::delete/$1');
-=======
 $routes->post('class/update/(:num)', 'ClassController::saveUpdate/$1'); 
 $routes->delete('class/delete/(:num)', 'ClassController::delete/$1'); 
 // $routes->post('class/update/', 'ClassController::update'); 
 
->>>>>>> d0065eb27ac05bcff4c1b8ee0fea978635ba05ac
+
+$routes->get('/material', 'MaterialController::index');
+$routes->get('/material/create', 'MaterialController::create');
+$routes->post('/material/store', 'MaterialController::store');
+$routes->get('/material/edit/(:num)', 'MaterialController::edit/$1');
+$routes->post('/material/update/(:num)', 'MaterialController::update/$1');
+$routes->post('/material/delete/(:num)', 'MaterialController::delete/$1');
 
 //student
 $routes->get('student/class', 'ClassController::studentClass');
 $routes->get('student/class/detail/(:num)', 'ClassController::studentClassDetail/$1');
-
-$routes->get('materials/create', 'MaterialController::create');
-$routes->get('materials/create/(:num)', 'MaterialController::create/$1');
-$routes->post('material/create/(:segment)', 'MaterialController::store/$1');
-$routes->post('materials/create', 'MaterialController::save');
-$routes->get('materials/edit/(:num)', 'MaterialController::edit/$1');
-$routes->post('materials/update/(:num)', 'MaterialController::update/$1');
-$routes->get('materials/delete/(:num)', 'MaterialController::delete/$1');
-
 
 $routes->get('notifications', 'NotificationController::showNotifications');
 $routes->get('notifications/read', 'NotificationController::readNotifications');

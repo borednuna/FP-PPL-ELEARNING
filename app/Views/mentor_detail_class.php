@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E-Learning App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
-    <!-- Link to Inter font from Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-
     <style>
         body {
             margin: 0;
             padding-top: 20px;
             font-family: Inter, sans-serif;
+            overflow: hidden;
         }
 
-        /* Sidebar styling */
         .sidebar {
             height: 100vh;
             width: 250px;
@@ -26,10 +22,7 @@
             left: 0;
             background-color: #4829B2;
             color: #fff;
-            padding-top: 40px;
-            padding-right: 20px;
-            padding-bottom: 20px;
-            padding-left: 20px;
+            padding: 20px;
         }
 
         .sidebar-brand {
@@ -40,7 +33,7 @@
 
         .sidebar-nav {
             list-style: none;
-            padding-left: 20px;
+            padding-left: 0;
         }
 
         .sidebar-nav .nav-item {
@@ -48,11 +41,11 @@
         }
 
         .sidebar-nav .nav-item a {
-            font-family: 'Inter', sans-serif;
+            color: #fff;
+            text-decoration: none;
         }
 
         .nav-item1 {
-            list-style: none;
             padding-top: 360px;
         }
 
@@ -61,7 +54,7 @@
             padding: 0.5rem 1rem;
             text-decoration: none;
             color: red;
-            background-color: white;
+            background-color: #F1E8F6;
             border-radius: 10px;
         }
 
@@ -74,8 +67,7 @@
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            padding: 30px;
-            padding-bottom: 0px;
+            padding: 30px 30px 0 0;
         }
 
         .user-info img {
@@ -90,131 +82,205 @@
             color: black;
         }
 
-        .container img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            /* Center the image */
-        }
-
-        .d-flex {
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Add separate containers for pelajaran and tugas */
-        .result-container {
-            margin: 20px;
-        }
-
-        .result-container h5 {
-            padding-top: 12px;
-            padding-bottom: 12px;
-        }
-
-        .result-container .row {
-            display: flex;
-            gap: 20px;
-        }
-
-        .card {
-            flex: 1 1 300px;
-            /* Added flex property */
+        .assignment-card {
+            height: 100%;
+            width: 90%;
             display: flex;
             flex-direction: column;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 7px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
         }
 
-        .card img {
-            flex-grow: 1;
-            object-fit: cover;
-            height: 100%;
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        h2 {
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        textarea.form-control {
             width: 100%;
+            height: 150px;
+            resize: both;
         }
 
-        .card-body p.card-text {
+        .custom-button {
             display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            color: #ffffff;
-            background-color: #32CA4D;
-            /* Set text color to white */
+            padding: 10px 20px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .custom-button:hover {
+            background-color: #218838;
+        }
+
+        /* Custom table styling */
+        .assignment table {
+            width: 80%;
+            border-collapse: collapse;
+        }
+
+        .assignment th,
+        .assignment td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .assignment th {
+            background-color: #4829B2;
+            color: #fff;
+            text-align: left;
+        }
+
+        .assignment tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .assignment tr:hover {
+            background-color: #ddd;
+        }
+
+        .assignment td a.btn {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+
+        /* Tambahan CSS untuk styling */
+        .btn-action {
+            margin-right: 5px;
         }
     </style>
 </head>
-
 <body>
-    <header>
-        <div class="sidebar">
-            <div style="padding-bottom: 40px; text-align: center; color: white;">
-                <a class="sidebar-brand" href="#">
-                    <img src="./assets/book.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                    E-learningApp
-                </a>
-            </div>
-            <ul class="sidebar-nav">
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/beranda.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
-                    </span>
-                </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./guru_kelas') ?>">Kelas</a>
-                    </span>
-                </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal_guru') ?>">Jadwal</a>
-                    </span>
-                </li>
-                <li class="nav-item1 text-center">
-                    <a class="nav-link active" aria-current="page" href="<?= base_url('./login') ?>">Keluar</a>
-                </li>
-            </ul>
+    <nav class="sidebar">
+        <div style="padding-bottom: 40px; text-align: center; color: white;">
+            <a class="sidebar-brand" href="#">
+                <img src="./assets/book.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                E-learningApp
+            </a>
         </div>
-    </header>
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/beranda.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
+                </span>
+            </li>
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('class') ?>">Kelas</a>
+                </span>
+            </li>
+            <!-- <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal') ?>">Jadwal</a>
+                </span>
+            </li>
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/nilai.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./nilai') ?>">Nilai</a>
+                </span>
+            </li> -->
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('assignments/create') ?>">Buat Tugas</a>
+                </span>
+            </li>
+            <!-- <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('materials/create') ?>">Materi</a>
+                </span>
+            </li> -->
+        </ul>
+        <ul class="nav-item1">
+            <a href="<?= base_url('logout') ?>">
+                Keluar
+            </a>
+        </ul>
+    </nav>
 
-    <div style="margin-left: 270px;">
-        <div class="d-flex justify-content-between align-items-center">
-        <div class="container mt-4" style="width: 70%">
+    <div class="container" style="margin-left: 270px;">
+        <header class="d-flex justify-content-between align-items-center">
+            <div class="container mt-4" style="width: 81%;">
                 <form class="form-inline">
                     <div class="d-flex justify-content-between align-items-center">
-                        <input class="form-control" type="search" placeholder="Cari kelas sekarang..." id="searchInput" aria-label="Search">
-                        <button class="btn btn-primary" type="button" onclick="searchPelajaran()" style="background-color: #4829B2; color: #ffffff;">Cari</button>
+                        <input class="form-control" type="search" placeholder="Cari material sekarang..." id="searchInput" aria-label="Search">
+                        <button class="btn btn-primary" type="button" onclick="searchPelajaran()">Cari</button>
                     </div>
                 </form>
             </div>
-            <div class="container mt-4" style="width: 20%">
-                <a href="<?= base_url('./add_section') ?>" class="btn btn-primary" style="background-color: #4829B2; color: #ffffff;">+ Add Section</a>
-            </div>
-
             <div class="user-info">
                 <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>
-                    <div class="user-name">Melanie Refman</div>
-                    <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
+                    <div class="user-name"><?php echo session()->get('username'); ?></div>
+                    <div class="user-name1" style="font-size: 13px;">Mentor</div>
                 </span>
             </div>
-        </div>
+        </header>
 
-        <!-- Add separate containers for pelajaran and tugas -->
-        <div class="result-container">
-            <img src="./assets/welcome_guru.png" class="img-fluid" style="padding-bottom: 40px;"><br>
-            <div class="row" id="resultPelajaran"></div>
-        </div>
-        <h1>Ini Daftar Materi</h1>
-        <div class="card shadow d-flex flex-column" style="align-items: flex-start;">
-             <div class="card-body img-fuild">
-                <p class="card-title">Aljabar apa itu</p>
-                    <h6 class="card-title">Gak tau males</h6>
-            </div>
+        <div class="container mt-5">
+            <h1>Material List</h1>
+            <a href="/material/create" class="btn btn-primary mb-3">Add Material</a>
+            <?php if (!empty($material) && is_array($material)): ?>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Content</th>
+                                <th>Video Path</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($material as $item): ?>
+                                <tr>
+                                    <td><?= $item['title'] ?></td>
+                                    <td><?= $item['material_description'] ?></td>
+                                    <td><?= $item['material_content'] ?></td>
+                                    <td><?= $item['video_path'] ?></td>
+                                    <td>
+                                        <a href="/material/edit/<?= $item['id'] ?>" class="btn btn-primary btn-sm btn-action">Edit</a>
+                                        <form action="/material/delete/<?= $item['id'] ?>" method="post" style="display:inline;">
+                                            <?= csrf_field() ?>
+                                            <button type="submit" class="btn btn-danger btn-sm btn-action">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php else: ?>
+                <div class="alert alert-info">
+                    <p>No materials found</p>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
-
 </html>

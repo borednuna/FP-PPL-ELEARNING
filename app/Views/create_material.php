@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E-Learning App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Material</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <style>
@@ -163,11 +162,15 @@
             padding: 5px 10px;
             font-size: 14px;
         }
+
+        /* Tambahan CSS untuk styling */
+        .btn-action {
+            margin-right: 5px;
+        }
     </style>
 </head>
-
 <body>
-    <nav class="sidebar">
+<nav class="sidebar">
         <div style="padding-bottom: 40px; text-align: center; color: white;">
             <a class="sidebar-brand" href="#">
                 <img src="./assets/book.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
@@ -184,10 +187,10 @@
             <li class="nav-item">
                 <span style="display: flex; align-items: center; padding-left: 20px;">
                     <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./kelas') ?>">Kelas</a>
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('class') ?>">Kelas</a>
                 </span>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <span style="display: flex; align-items: center; padding-left: 20px;">
                     <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                     <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal') ?>">Jadwal</a>
@@ -198,11 +201,17 @@
                     <img src="./assets/nilai.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                     <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./nilai') ?>">Nilai</a>
                 </span>
+            </li> -->
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('assignments/create') ?>">Buat Tugas</a>
+                </span>
             </li>
             <!-- <li class="nav-item">
                 <span style="display: flex; align-items: center; padding-left: 20px;">
                     <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./materi') ?>">Materi</a>
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('materials/create') ?>">Materi</a>
                 </span>
             </li> -->
         </ul>
@@ -212,61 +221,32 @@
             </a>
         </ul>
     </nav>
-
-    <div class="container" style="margin-left: 270px;">
-        <header class="d-flex justify-content-between align-items-center">
-            <div class="container mt-4" style="width: 81%;">
-                <form class="form-inline">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <input class="form-control" type="search" placeholder="Cari kelas sekarang..." id="searchInput" aria-label="Search">
-                        <button class="btn btn-primary" type="button" onclick="searchPelajaran()">Cari</button>
-                    </div>
-                </form>
+    <div class="container mt-5">
+        <h1>Add Material</h1>
+        <form action="/material/store" method="post">
+            <?= csrf_field() ?>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
             </div>
-
-            <div class="user-info">
-                <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
-                <span>
-                    <div class="user-name"><?php echo session()->get('username'); ?></div>
-                    <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
-                </span>
+            <div class="form-group">
+                <label for="material_description">Material Description</label>
+                <textarea class="form-control" id="material_description" name="material_description" required></textarea>
             </div>
-        </header>
-
-        <!-- table -->
-        <div class="container mt-4">
-            <div class="assignment" style="margin-top: 20px;">
-                <h1>Pengumpulan Tugas</h1>
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>Siswa</th>
-                            <th>Tanggal Pengumpulan</th>
-                            <th>Nilai</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($submissions as $submission) : ?>
-                        <tr>
-                            <td><?= $submission['username'] ?></td>
-                            <td><?= $submission['date_submitted'] ?></td>
-                            <td>
-                                <form action="<?= base_url('assignments/update_grade') ?>" method="post" class="d-inline">
-                                    <input type="hidden" name="submission_id" value="<?= esc($submission['id']) ?>">
-                                    <input type="number" placeholder="Nilai belum diberikan" name="grade" value="<?= $submission['grade'] ?>" class="form-control d-inline w-auto">
-                                    <button type="submit" class="btn btn-success btn-sm">Update</button>
-                                </form>
-                            </td>
-                            <td>
-                            <a href="<?= base_url('uploads/' . $submission['uploaded_file']) ?>" class="btn btn-danger btn-sm" download>Unduh file</a>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+            <div class="form-group">
+                <label for="material_content">Material Content</label>
+                <textarea class="form-control" id="material_content" name="material_content" required></textarea>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="video_path">Video Path</label>
+                <input type="text" class="form-control" id="video_path" name="video_path">
+            </div>
+            <div class="form-group">
+                <label for="class_id">Class ID</label>
+                <input type="number" class="form-control" id="class_id" name="class_id" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
     </div>
 </body>
 </html>
