@@ -248,29 +248,28 @@
     </header>
 
     <div style="margin-left: 270px;">
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="container mt-4" style="width: 81%;">
-                <form class="form-inline" method="get" action="<?php echo site_url('class/search'); ?>">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <input type="text" class="form-control" name="kelas" placeholder="Cari kelas ..." required><br>
-                        <button type="submit" class="btn btn-primary">Cari</button>
-                    </div>
-                </form>
-            </div>
-            <div class="user-info">
-                <img src="<?= base_url('assets/mtk.png'); ?>" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
-                <span>
-                    <div class="user-name"><?php echo session()->get('username'); ?></div>
-                    <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
-                </span>
-            </div>
-        </div>
-
         <!-- Add separate containers for pelajaran and tugas -->
         <div class="result-container">
             <img src="./assets/welcome_guru.png" class="img-fluid" style="padding-bottom: 40px;"><br>
+            <img src="./assets/welcome_guru.png" class="img-fluid" style="padding-bottom: 40px;"><br>
             <div class="row" id="resultPelajaran"></div>
         </div>
+        <h1>Exams in This Class</h1>
+        <?php if (empty($exams)) : ?>
+            <p>No exams found.</p>
+        <?php else : ?>
+            <?php foreach ($exams as $exam) : ?>
+                <div class="card shadow d-flex flex-column" style="align-items: flex-start; margin-bottom:10px; width: 70%">
+                    <div class="card-body img-fuild">
+                        <h6 class="card-title"><?= esc($exam['name']); ?></h6>
+                        <p class="card-title">Start time : <?= esc($exam['start_time']); ?>, End time : <?= esc($exam['end_time']); ?></p>
+                        <div class="card-body img-fluid">
+                        <a href="<?= base_url('exam/' . $exam['id']); ?>" class="btn btn-sm btn-warning">Take Exam</a>
+                    </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
         <h1>Ini Daftar Materi</h1>
         <div class="card shadow d-flex flex-column" style="align-items: flex-start;">
              <div class="card-body img-fuild">
@@ -278,6 +277,7 @@
                     <h6 class="card-title">Gak tau males</h6>
             </div>
         </div>
+    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

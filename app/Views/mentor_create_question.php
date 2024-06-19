@@ -15,6 +15,7 @@
             margin: 0;
             padding-top: 20px;
             font-family: Inter, sans-serif;
+            overflow: hidden;
         }
 
         /* Sidebar styling */
@@ -24,7 +25,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #002979;
+            background-color: #4829B2;
             color: #fff;
             padding-top: 40px;
             padding-right: 20px;
@@ -61,7 +62,7 @@
             padding: 0.5rem 1rem;
             text-decoration: none;
             color: red;
-            background-color: white;
+            background-color: #F1E8F6;
             border-radius: 10px;
         }
 
@@ -209,6 +210,71 @@
             background-color: #32CA4D;
             /* Set text color to white */
         }
+
+        .assignment-card {
+            height: 100%;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 7px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        h2 {
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        textarea.form-control {
+            width: 100%;
+            height: 150px;
+            resize: both;
+        }
+
+        .submit-button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: #218838;
+        }
+
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .custom-button:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 
@@ -217,55 +283,63 @@
         <div class="sidebar">
             <div style="padding-bottom: 40px; text-align: center; color: white;">
                 <a class="sidebar-brand" href="#">
-                    <img src="<?= base_url('assets/book.png'); ?>" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    <img src="./assets/book.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                     E-learningApp
                 </a>
             </div>
             <ul class="sidebar-nav">
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="<?= base_url('assets/beranda.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <img src="./assets/beranda.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('#') ?>">Beranda</a>
                     </span>
                 </li>
                 <li class="nav-item">
-                <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="<?= base_url('assets/kelas.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?php echo site_url('student/class'); ?>">Kelas</a>
+                        <img src="./assets/kelas.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('class') ?>">Kelas</a>
                     </span>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
                         <img src="./assets/jadwal.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('assignments/details/4') ?>">Detail Tugas</a>
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./jadwal') ?>">Jadwal</a>
                     </span>
                 </li>
                 <li class="nav-item">
                     <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="<?= base_url('assets/jadwal.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('notifications/read') ?>">Notifikasi</a>
+                        <img src="./assets/nilai.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./nilai') ?>">Nilai</a>
+                    </span>
+                </li> -->
+                <li class="nav-item">
+                    <span style="display: flex; align-items: center; padding-left: 20px;">
+                        <img src="./assets/materi.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('materials/create') ?>">Materi</a>
                     </span>
                 </li>
-                <li class="nav-item1 text-center">
-                    <a class="nav-link active" aria-current="page" href="<?php echo site_url('auth/logout'); ?>">Keluar</a>
-                </li>
+            </ul>
+            <ul class="nav-item1">
+                <a href="<?= base_url('logout') ?>">
+                    Keluar
+                </a>
             </ul>
         </div>
     </header>
 
-    <div style="margin-left: 270px;">
+    <div class="container" style="margin-left: 270px;">
         <div class="d-flex justify-content-between align-items-center">
             <div class="container mt-4" style="width: 81%;">
-                <form class="form-inline" method="get" action="<?php echo site_url('class/search'); ?>">
+                <form class="form-inline">
                     <div class="d-flex justify-content-between align-items-center">
-                        <input type="text" class="form-control" name="kelas" placeholder="Cari kelas ..." required><br>
-                        <button type="submit" class="btn btn-primary">Cari</button>
+                        <input class="form-control" type="search" placeholder="Cari pertanyaan sekarang..." id="searchInput" aria-label="Search">
+                        <button class="btn btn-primary" type="button" onclick="searchPelajaran()">Cari</button>
                     </div>
                 </form>
             </div>
+
             <div class="user-info">
-                <img src="<?= base_url('assets/mtk.png'); ?>" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
+                <img src="./assets/ellipse-1-bg-eyb.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
                 <span>
                     <div class="user-name"><?php echo session()->get('username'); ?></div>
                     <div class="user-name1" style="font-size: 13px;">Kelas 12</div>
@@ -273,16 +347,56 @@
             </div>
         </div>
 
-        <!-- Add separate containers for pelajaran and tugas -->
-        <div style="margin: 20px;">
-            <img src="./assets/welcome.png" class="img-fluid"><br>
-            <h5 style="padding-top: 12px; padding-bottom: 12px;">Lanjutkan Belajar</h5>
-            <div class="row" id="resultPelajaran"></div>
-            <h5>Kerjakan Tugasmu</h5>
-            <div class="row mt-4" id="resultTugas"></div>
-        </div>
+        <div class="scrollable-form-container">
+            <div class="class-card">
+                <h1>Create Question</h1>
+                <?php echo form_open('question/store', 'method="post"'); ?>
+                    <!-- label for question id, auto increment -->
+                    <label for="question">Question</label>
+                    <textarea class="form-control" name="question" placeholder="Question" required></textarea>
 
+                    <label for="option_a">Option A</label>
+                    <input type="text" class="form-control" name="option_a" required><br>
+
+                    <label for="option_b">Option B</label>  
+                    <input type="text" class="form-control" name="option_b" required><br>
+
+                    <label for="option_c">Option C</label>
+                    <input type="text" class="form-control" name="option_c" required><br>
+
+                    <label for="option_d">Option D</label>
+                    <input type="text" class="form-control" name="option_d" required><br>
+
+                    <label for="option_e">Option E</label>
+                    <input type="text" class="form-control" name="option_e" required><br>
+
+                    <label for="correct_answer">Correct Answer</label>
+                    <select class="form-control" name="correct_answer" required>
+                        <option value="A">Option A</option>
+                        <option value="B">Option B</option>
+                        <option value="C">Option C</option>
+                        <option value="D">Option D</option>
+                        <option value="E">Option E</option>
+                    </select><br>
+
+                    <label for="exam_id">Exam ID</label>
+                    <select class="form-control" name="exam_id" required>
+                        <?php foreach ($exams as $exam): ?>
+                            <option value="<?php echo $exam['id']; ?>"><?php echo $exam['name']; ?></option>
+                        <?php endforeach; ?>
+                    </select><br>
+
+                    <button type="submit" class="custom-button">Create Question</button>
+                <?php echo form_close(); ?>
+            </div>
+        </div>
     </div>
+    <style>
+        .scrollable-form-container {
+            max-height: 600px; 
+            overflow-y: auto;
+        }
+    </style>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

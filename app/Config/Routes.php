@@ -21,6 +21,8 @@ $routes->post('assignments/submit/(:num)', 'AssignmentController::submit/$1');
 $routes->delete('assignments/submit/delete/(:num)', 'AssignmentController::deleteSubmission/$1');
 $routes->get('assignments/submissions/(:num)', 'AssignmentController::allSubmissions/$1');
 $routes->post('assignments/update_grade', 'AssignmentController::updateGrade');
+$routes->get('exams/details/(:num)', 'Exam::detail/$1');
+
 
 //mentor dashboard
 $routes->get('mentordashboard', 'MentorDashboard::index');
@@ -56,3 +58,14 @@ $routes->get('notifications/read', 'NotificationController::readNotifications');
 $routes->get('class/create', 'ClassController::create');
 
 $routes->get('exams/submissions/(:num)', 'ExamController::allExamSubmissions/$1');
+$routes->get('exams/create/(:num)', 'Exam::create/$1');
+$routes->post('exams/create/(:num)', 'Exam::save/$1');
+$routes->get('exams/delete/(:num)', 'Exam::delete/$1');
+$routes->get('exam/(:num)', 'Exam::view/$1');
+$routes->post('exam/submit/(:num)', 'Exam::submit/$1');
+
+$routes->get('exams/details/(:num)', 'Exam::detail/$1');
+$routes->get('question/create', 'Question::create');
+$routes->post('question/store', 'Question::store');
+$routes->get('question/(:num)', 'Question::index/$1'); 
+$routes->get('question/delete/(:num)', 'Question::delete/$1');
