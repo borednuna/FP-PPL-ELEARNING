@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Kelas</title>
+    <title>Edit Material</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <style>
         body {
             margin: 0;
+            padding-top: 20px;
             font-family: Inter, sans-serif;
             overflow: hidden;
-            height: 100vh;
-            display: flex;
         }
 
         .sidebar {
@@ -84,6 +83,8 @@
         }
 
         .assignment-card {
+            height: 100%;
+            width: 90%;
             display: flex;
             flex-direction: column;
             padding: 20px;
@@ -133,7 +134,7 @@
 
         /* Custom table styling */
         .assignment table {
-            width: 100%;
+            width: 80%;
             border-collapse: collapse;
         }
 
@@ -166,15 +167,6 @@
         .btn-action {
             margin-right: 5px;
         }
-
-        /* New styles for scrolling */
-        .content {
-            margin-left: 270px;
-            padding: 20px;
-            height: 100vh;
-            overflow-y: auto;
-            width: calc(100% - 270px);
-        }
     </style>
 </head>
 <body>
@@ -198,95 +190,44 @@
                     <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('class') ?>">Kelas</a>
                 </span>
             </li>
+            <li class="nav-item">
+                <span style="display: flex; align-items: center; padding-left: 20px;">
+                    <img src="<?= base_url('assets/jadwal.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
+                    <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('assignments/create') ?>">Buat Tugas</a>
+                </span>
+            </li>
         </ul>
         <ul class="nav-item1">
-            <a href="<?= base_url('logout') ?>">Keluar</a>
+            <a href="<?= base_url('logout') ?>">
+                Keluar
+            </a>
         </ul>
     </nav>
-
-    <div class="content">
-        <header class="d-flex justify-content-between align-items-center">
-            <div class="container mt-4" style="width: 81%">
-                <form class="form-inline">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <input class="form-control" type="search" placeholder="Cari material sekarang..." id="searchInput" aria-label="Search">
-                        <button class="btn btn-primary" type="button" onclick="searchPelajaran()">Cari</button>
-                    </div>
-                </form>
+    <div class="container mt-5">
+        <h1>Edit Material</h1>
+        <form action="<?= base_url('material/update/' . $material['id']); ?>" method="post">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="<?= $material['title']; ?>" required>
             </div>
-            <div class="user-info">
-                <img src="<?= base_url('assets/ellipse-1-bg-eyb.png'); ?>" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
-                <span>
-                    <div class="user-name"><?php echo session()->get('username'); ?></div>
-                    <div class="user-name1" style="font-size: 13px;">Mentor</div>
-                </span>
+            <div class="form-group">
+                <label for="material_description">Material Description</label>
+                <textarea class="form-control" id="material_description" name="material_description" required><?= $material['material_description']; ?></textarea>
             </div>
-        </header>
-
-        <main>
-            <div class="assignment-card">
-                <h1>Detail Kelas</h1>
-                <h2>Materi Kelas</h2>
-                <div class="assignment">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Content</th>
-                                <th>Video</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if(isset($materials) && count($materials) > 0): ?>
-                                <?php foreach($materials as $material): ?>
-                                    <tr>
-                                        <td><?= $material['title']; ?></td>
-                                        <td><?= $material['material_description']; ?></td>
-                                        <td><?= $material['material_content']; ?></td>
-                                        <td><?= $material['video_path']; ?></td>
-                                        <td>
-                                            <a href="<?= base_url('material/edit/' . $material['id']); ?>" class="btn btn-warning btn-action">Edit</a>
-                                            <form action="<?= base_url('material/delete/' . $material['id']); ?>" method="POST" style="display:inline;">
-                                                <button type="submit" class="btn btn-danger btn-action">Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <tr>
-                                    <td colspan="5">No materials found for this class.</td>
-                                </tr>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
-                </div>
-                <a href="<?= base_url('material/create'); ?>" class="custom-button">Add New Material</a>
+            <div class="form-group">
+                <label for="material_content">Material Content</label>
+                <textarea class="form-control" id="material_content" name="material_content" required><?= $material['material_content']; ?></textarea>
             </div>
-            <div>
-            <h1>Exams in This Class</h1>
-            <?php if (empty($exams)) : ?>
-                <p>No exams found.</p>
-            <?php else : ?>
-                <?php foreach ($exams as $exam) : ?>
-                    <div class="card shadow d-flex flex-column" style="align-items: flex-start; margin-bottom:10px; width: 70%">
-                        <div class="card-body img-fuild">
-                            <h6 class="card-title"><?= esc($exam['name']); ?></h6>
-                            <p class="card-title">Start time : <?= esc($exam['start_time']); ?>, End time : <?= esc($exam['end_time']); ?></p>
-                            <div class="card-body img-fluid">
-                                <a class="btn btn-sm btn-primary">Update</a>
-                                <a href="<?= base_url('exams/delete/' . $exam['id']); ?>" class="btn btn-sm btn-danger">Delete</a>
-                                <a href="<?= base_url('question/' . $exam['id']); ?>" class="btn btn-sm btn-warning">Manage Questions</a>
-                                <a href="<?= base_url('exams/submissions/' . $exam['id']); ?>" class="btn btn-sm btn-info">View Submissions</a>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
+            <div class="form-group">
+                <label for="video_path">Video Path</label>
+                <input type="text" class="form-control" id="video_path" name="video_path" value="<?= $material['video_path']; ?>" required>
             </div>
-        </main>
+            <div class="form-group">
+                <input type="hidden" name="class_id" value="<?= $material['class_id']; ?>">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="<?= base_url('class/detail/' . $material['class_id']); ?>" class="btn btn-secondary">Cancel</a>
+        </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

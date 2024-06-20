@@ -66,5 +66,4 @@ class ClassModel extends Model
     {
         return $this->db->table($this->table)->delete(['id' => $id]);
     }
-
 }
