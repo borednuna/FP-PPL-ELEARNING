@@ -306,6 +306,9 @@
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('notifications/') ?>">Notifikasi</a>
                     </span>
                 </li> -->
+                <li class="nav-item1 text-center">
+                    <a class="nav-link active" aria-current="page" href="<?php echo site_url('auth/logout'); ?>">Keluar</a>
+                </li>
             </ul>
         </div>
     </header>

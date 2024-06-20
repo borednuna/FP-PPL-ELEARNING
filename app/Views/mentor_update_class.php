@@ -305,12 +305,9 @@
                         <img src="<?= base_url('assets/jadwal.png'); ?>" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
                         <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('notifications/') ?>">Notifikasi</a>
                     </span>
-                </li>
-                <li class="nav-item">
-                    <span style="display: flex; align-items: center; padding-left: 20px;">
-                        <img src="./assets/nilai.png" alt="Logo" width="20" height="20" class="d-inline-block align-text-top">
-                        <a class="nav-link active" style="padding-left: 5px;" aria-current="page" href="<?= base_url('./nilai') ?>">Nilai</a>
-                    </span>
+                </li> -->
+                <li class="nav-item1 text-center">
+                    <a class="nav-link active" aria-current="page" href="<?php echo site_url('auth/logout'); ?>">Keluar</a>
                 </li>
             </ul>
         </div>

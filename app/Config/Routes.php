@@ -21,6 +21,8 @@ $routes->post('assignments/submit/(:num)', 'AssignmentController::submit/$1');
 $routes->delete('assignments/submit/delete/(:num)', 'AssignmentController::deleteSubmission/$1');
 $routes->get('assignments/submissions/(:num)', 'AssignmentController::allSubmissions/$1');
 $routes->post('assignments/update_grade', 'AssignmentController::updateGrade');
+$routes->get('exams/details/(:num)', 'Exam::detail/$1');
+
 
 //mentor dashboard
 $routes->get('mentordashboard', 'MentorDashboard::index');
@@ -30,12 +32,12 @@ $routes->get('class/create', 'ClassController::create');
 $routes->post('class/create', 'ClassController::saveCreate');
 $routes->get('/class/detail/(:num)', 'MaterialController::getByClassId/$1');
 $routes->get('class/update/(:num)', 'ClassController::updateClass/$1'); 
-$routes->post('class/update/(:num)', 'ClassController::saveUpdate/$1');
-$routes->get('class/delete/(:num)', 'ClassController::delete/$1');
-$routes->post('class/update/(:num)', 'ClassController::saveUpdate/$1'); 
-$routes->delete('class/delete/(:num)', 'ClassController::delete/$1'); 
-// $routes->post('class/update/', 'ClassController::update'); 
 
+$routes->post('class/update/(:num)', 'ClassController::saveUpdate/$1'); 
+$routes->get('class/delete/(:num)', 'ClassController::delete/$1'); 
+$routes->get('class/search', 'ClassController::searchClass');
+$routes->get('class/enroll/(:num)', 'ClassController::enrollClass/$1');
+// $routes->post('class/update/', 'ClassController::update'); 
 
 $routes->get('/material', 'MaterialController::index');
 $routes->get('/material/create', 'MaterialController::create');
@@ -43,7 +45,6 @@ $routes->post('/material/store', 'MaterialController::store');
 $routes->get('/material/edit/(:num)', 'MaterialController::edit/$1');
 $routes->post('/material/delete/(:num)', 'MaterialController::delete/$1');
 $routes->post('/material/update/(:num)', 'MaterialController::update/$1');
-$routes->get('/material/delete/(:num)', 'MaterialController::confirmDelete/$1'); // Opsional jika ada konfirmasi penghapusan
 
 //student
 $routes->get('student/class', 'ClassController::studentClass');
@@ -54,4 +55,17 @@ $routes->get('notifications/read', 'NotificationController::readNotifications');
 
 $routes->get('class/create', 'ClassController::create');
 
+
 $routes->get('exams/submissions/(:num)', 'ExamController::allExamSubmissions/$1');
+$routes->get('exams/submissions/(:num)', 'Exam::getExamSubmissionsByExam/$1');
+$routes->get('exams/create/(:num)', 'Exam::create/$1');
+$routes->post('exams/create/(:num)', 'Exam::save/$1');
+$routes->get('exams/delete/(:num)', 'Exam::delete/$1');
+$routes->get('exam/(:num)', 'Exam::view/$1');
+$routes->post('exam/submit/(:num)', 'Exam::submit/$1');
+
+$routes->get('exams/details/(:num)', 'Exam::detail/$1');
+$routes->get('question/create', 'Question::create');
+$routes->post('question/store', 'Question::store');
+$routes->get('question/(:num)', 'Question::index/$1'); 
+$routes->get('question/delete/(:num)', 'Question::delete/$1');

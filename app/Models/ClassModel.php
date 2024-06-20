@@ -25,16 +25,16 @@ class ClassModel extends Model
         $data_array = $query->getResultArray();
 
         foreach ($data_array as &$data) {
-            $data['class_is_joined'] = false;
+            $data['class_is_joined'] = 'false';
 
             $query = $this->db->query("SELECT * FROM class_user WHERE class_id = ? AND user_id = ?", [$data['id'], $user_id]);
             $class_user = $query->getRowArray();
-
+            
             if ($class_user) {
-                $data['class_is_joined'] = true;
+                $data['class_is_joined'] = 'true';
             }
         }
-
+        
         unset($data);
         return $data_array;
     }
@@ -66,5 +66,4 @@ class ClassModel extends Model
     {
         return $this->db->table($this->table)->delete(['id' => $id]);
     }
-
 }

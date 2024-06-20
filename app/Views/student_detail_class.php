@@ -213,7 +213,7 @@
 </head>
 
 <body>
-    <header>
+<header>
         <div class="sidebar">
             <div style="padding-bottom: 40px; text-align: center; color: white;">
                 <a class="sidebar-brand" href="#">
@@ -254,61 +254,31 @@
             <img src="./assets/welcome_guru.png" class="img-fluid" style="padding-bottom: 40px;"><br>
             <div class="row" id="resultPelajaran"></div>
         </div>
-
-        <!-- Ujian Kelas Section -->
-        <div>
-            <h1>Exams in This Class</h1>
-            <?php if (empty($exams)) : ?>
-                <p>No exams found.</p>
-            <?php else : ?>
-                <?php foreach ($exams as $exam) : ?>
-                    <div class="card shadow d-flex flex-column" style="align-items: flex-start; margin-bottom:10px; width: 70%">
-                        <div class="card-body img-fuild">
-                            <h6 class="card-title"><?= esc($exam['name']); ?></h6>
-                            <p class="card-title">Start time : <?= esc($exam['start_time']); ?>, End time : <?= esc($exam['end_time']); ?></p>
-                            <div class="card-body img-fluid">
-                                <a href="<?= base_url('exam/' . $exam['id']); ?>" class="btn btn-sm btn-warning">Take Exam</a>
-                            </div>
-                        </div>
+        <h1>Exams in This Class</h1>
+        <?php if (empty($exams)) : ?>
+            <p>No exams found.</p>
+        <?php else : ?>
+            <?php foreach ($exams as $exam) : ?>
+                <div class="card shadow d-flex flex-column" style="align-items: flex-start; margin-bottom:10px; width: 70%">
+                    <div class="card-body img-fuild">
+                        <h6 class="card-title"><?= esc($exam['name']); ?></h6>
+                        <p class="card-title">Start time : <?= esc($exam['start_time']); ?>, End time : <?= esc($exam['end_time']); ?></p>
+                        <div class="card-body img-fluid">
+                        <a href="<?= base_url('exam/' . $exam['id']); ?>" class="btn btn-sm btn-warning">Take Exam</a>
                     </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-
-        <!-- Materi Kelas Section -->
-        <div class="assignment-card">
-            <h1>Materi Kelas</h1>
-            <div class="assignment">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Content</th>
-                            <th>Video</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (!empty($materials)) : ?>
-                            <?php foreach ($materials as $material) : ?>
-                                <tr>
-                                    <td><?= esc($material['title']); ?></td>
-                                    <td><?= esc($material['material_description']); ?></td>
-                                    <td><?= esc($material['material_content']); ?></td>
-                                    <td><?= esc($material['video_path']); ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else : ?>
-                            <tr>
-                                <td colspan="4">No materials found for this class.</td>
-                            </tr>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <h1>Ini Daftar Materi</h1>
+        <div class="card shadow d-flex flex-column" style="align-items: flex-start;">
+             <div class="card-body img-fuild">
+                <p class="card-title">Aljabar apa itu</p>
+                    <h6 class="card-title">Gak tau males</h6>
             </div>
         </div>
     </div>
-
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
