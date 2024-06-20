@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\Notification;
 use CodeIgniter\Controller;
 
-class NotificationController extends BaseController
+class NotificationController extends Controller
 {
     public function showNotifications()
     {
@@ -20,9 +20,8 @@ class NotificationController extends BaseController
 
     public function readNotifications()
     {
-        $user_id = $this->session->get('id');
         $notificationModel = new Notification();
-        $notifications = $notificationModel->getNotificationsByUserId($user_id);
+        $notifications = $notificationModel->findAll();
 
         return view('student_notifications', [
             'notifications' => $notifications,
