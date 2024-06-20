@@ -230,35 +230,34 @@
                 <div class="assignment">
                     <table>
                         <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Content</th>
-                                <th>Video</th>
-                                <th>Actions</th>
-                            </tr>
                         </thead>
                         <tbody>
-                            <?php if(isset($materials) && count($materials) > 0): ?>
-                                <?php foreach($materials as $material): ?>
-                                    <tr>
-                                        <td><?= $material['title']; ?></td>
-                                        <td><?= $material['material_description']; ?></td>
-                                        <td><?= $material['material_content']; ?></td>
-                                        <td><?= $material['video_path']; ?></td>
-                                        <td>
-                                            <a href="<?= base_url('material/edit/' . $material['id']); ?>" class="btn btn-warning btn-action">Edit</a>
-                                            <form action="<?= base_url('material/delete/' . $material['id']); ?>" method="POST" style="display:inline;">
-                                                <button type="submit" class="btn btn-danger btn-action">Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <tr>
-                                    <td colspan="5">No materials found for this class.</td>
-                                </tr>
-                            <?php endif; ?>
+                        <?php if (empty($materials)) : ?>
+                            <p>No material found.</p>
+                        <?php else : ?>
+                            <?php foreach ($materials as $material) : ?>
+                                <div class="card shadow d-flex flex-column" style="align-items: flex-start; margin-bottom:10px; width: 70%">
+                                    <div class="card-body img-fuild">
+                                        <h6 class="card-title"><?= esc($material['title']); ?></h6>
+                                        <p class="card-title"><?= esc($material['material_description']); ?></p>
+                                        <p class="card-title"><?= esc($material['material_content']); ?></p>
+                                        <p class="card-title">Reference :</p>
+                                        <a href="<?= esc($material['video_path']); ?>"><?= esc($material['video_path']); ?></a><br/>
+                                        <a href="<?= base_url('material/edit/' . $material['material_id']); ?>" class="btn btn-warning btn-action">Edit</a>
+                                        <form action="<?= base_url('material/delete/' . $material['material_id']); ?>" method="POST" style="display:inline;">
+                                            <button type="submit" class="btn btn-danger btn-action">Delete</button>
+                                        </form>
+                                        <?php if ($material['assignment_id'] == null) : ?>
+                                            <a href="<?= base_url('assignments/create/' . $material['material_id']); ?>" class="btn btn-info btn-action">Add Assignment</a>
+                                        <?php else : ?>
+                                            <a href="<?= base_url('assignments/details/' . $material['assignment_id']); ?>" class="btn btn-info btn-action">View Assignment</a>
+                                            <a href="<?= base_url('assignments/submissions/' . $material['assignment_id']); ?>" class="btn btn-info btn-action">View Submission</a>
+                                        <?php endif; ?>
+                                    </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                         </tbody>
                     </table>
                 </div>

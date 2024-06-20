@@ -254,29 +254,56 @@
             <img src="./assets/welcome_guru.png" class="img-fluid" style="padding-bottom: 40px;"><br>
             <div class="row" id="resultPelajaran"></div>
         </div>
-        <h1>Exams in This Class</h1>
-        <?php if (empty($exams)) : ?>
-            <p>No exams found.</p>
-        <?php else : ?>
-            <?php foreach ($exams as $exam) : ?>
-                <div class="card shadow d-flex flex-column" style="align-items: flex-start; margin-bottom:10px; width: 70%">
-                    <div class="card-body img-fuild">
-                        <h6 class="card-title"><?= esc($exam['name']); ?></h6>
-                        <p class="card-title">Start time : <?= esc($exam['start_time']); ?>, End time : <?= esc($exam['end_time']); ?></p>
-                        <div class="card-body img-fluid">
-                        <a href="<?= base_url('exam/' . $exam['id']); ?>" class="btn btn-sm btn-warning">Take Exam</a>
-                    </div>
-                    </div>
+        <div class="assignment-card">
+                <h1>Detail Kelas</h1>
+                <h2>Materi Kelas</h2>
+                <div class="assignment">
+                    <table>
+                        <thead>
+                        </thead>
+                        <tbody>
+                        <?php if (empty($materials)) : ?>
+                            <p>No material found.</p>
+                        <?php else : ?>
+                            <?php foreach ($materials as $material) : ?>
+                                <div class="card shadow d-flex flex-column" style="align-items: flex-start; margin-bottom:10px; width: 70%">
+                                    <div class="card-body img-fuild">
+                                        <h6 class="card-title"><?= esc($material['title']); ?></h6>
+                                        <p class="card-title"><?= esc($material['material_description']); ?></p>
+                                        <p class="card-title"><?= esc($material['material_content']); ?></p>
+                                        <p class="card-title">Reference :</p>
+                                        <a href="<?= esc($material['video_path']); ?>"><?= esc($material['video_path']); ?></a><br/>
+                                        <?php if ($material['assignment_id'] != null) : ?>
+                                            <a href="<?= base_url('assignments/details/' . $material['assignment_id']); ?>" class="btn btn-info btn-action">View Assignment</a>
+                                        <?php endif; ?>
+                                    </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        </tbody>
+                    </table>
                 </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
-        <h1>Ini Daftar Materi</h1>
-        <div class="card shadow d-flex flex-column" style="align-items: flex-start;">
-             <div class="card-body img-fuild">
-                <p class="card-title">Aljabar apa itu</p>
-                    <h6 class="card-title">Gak tau males</h6>
+                <a href="<?= base_url('material/create'); ?>" class="custom-button">Add New Material</a>
             </div>
-        </div>
+            <div>
+            <h1>Exams in This Class</h1>
+            <?php if (empty($exams)) : ?>
+                <p>No exams found.</p>
+            <?php else : ?>
+                <?php foreach ($exams as $exam) : ?>
+                    <div class="card shadow d-flex flex-column" style="align-items: flex-start; margin-bottom:10px; width: 70%">
+                        <div class="card-body img-fuild">
+                            <h6 class="card-title"><?= esc($exam['name']); ?></h6>
+                            <p class="card-title">Start time : <?= esc($exam['start_time']); ?>, End time : <?= esc($exam['end_time']); ?></p>
+                            <div class="card-body img-fluid">
+                            <a href="<?= base_url('exam/' . $exam['id']); ?>" class="btn btn-sm btn-warning">Take Exam</a>
+                        </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </div>
     </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

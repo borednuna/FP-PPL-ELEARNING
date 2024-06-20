@@ -56,12 +56,15 @@ class AssignmentController extends BaseController
         return view($viewName, $data);
     }
 
-    public function create()
+    public function create($material_id)
     {
-        return view('mentor_create_assignment');
+        $data = [
+            'material_id' => $material_id,
+        ];
+        return view('mentor_create_assignment', $data);
     }
 
-    public function save()
+    public function save($material_id)
     {
         if (!$this->validate([
             'name' => 'required',
@@ -74,7 +77,7 @@ class AssignmentController extends BaseController
         $data = [
             'name' => $this->request->getPost('name'),
             'description' => $this->request->getPost('description'),
-            'material_id' => 1,
+            'material_id' => $material_id,
             'deadline' => $this->request->getPost('deadline')
         ];
 

@@ -335,7 +335,7 @@
 
         <div class="assignment-card">
             <h1>Create Assignment</h1>
-            <?php echo form_open('assignments/create', 'method="post"'); ?>
+            <?php echo form_open('assignments/create/' . $material_id, 'method="post"'); ?>
                 <label for="name">Assignment Name</label>
                 <input type="text" class="form-control" name="name" placeholder="Name" required><br>
 
@@ -343,7 +343,7 @@
                 <textarea class="form-control" name="description" placeholder="Description" required></textarea>
 
                 <label for="deadline">Deadline</label>
-                <input type="text" class="form-control" name="deadline" required><br>
+                <input type="text" placeholder="2021-01-10 00:00:00" class="form-control" name="deadline" required><br>
                 <button type="submit" class="custom-button">Create Assignment</button>
             <?php echo form_close(); ?>
         </div>

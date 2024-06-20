@@ -216,7 +216,7 @@
                     <input type="hidden" name="_method" value="DELETE">
                 </form>
                 <button type="button" style="margin-top: 0px; width: 85%; background-color: #F80202; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#F15757'" onmouseout="this.style.backgroundColor='#F80202'" class="custom-button" onclick="deleteSubmission()">
-                    Delete Submission
+                    Delete Assignment
                 </button>
             <?php endforeach; ?>
         <?php else: ?>

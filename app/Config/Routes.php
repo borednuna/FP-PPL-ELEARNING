@@ -13,8 +13,8 @@ $routes->post('auth/login', 'Auth::login');
 $routes->get('auth/logout', 'Auth::logout');
 $routes->get('dashboard', 'Dashboard::index');
 $routes->get('assignments/details/(:num)', 'AssignmentController::detail/$1');
-$routes->get('assignments/create', 'AssignmentController::create');
-$routes->post('assignments/create', 'AssignmentController::save');
+$routes->get('assignments/create/(:num)', 'AssignmentController::create/$1');
+$routes->post('assignments/create/(:num)', 'AssignmentController::save/$1');
 $routes->put('assignments/update/(:num)', 'AssignmentController::update/$1');
 $routes->delete('assignments/delete/(:num)', 'AssignmentController::delete/$1');
 $routes->post('assignments/submit/(:num)', 'AssignmentController::submit/$1');
@@ -30,7 +30,7 @@ $routes->get('class', 'ClassController::view');
 $routes->get('class/create', 'ClassController::create');
 
 $routes->post('class/create', 'ClassController::saveCreate');
-$routes->get('/class/detail/(:num)', 'MaterialController::getByClassId/$1');
+$routes->get('/class/detail/(:num)', 'ClassController::detailClass/$1');
 $routes->get('class/update/(:num)', 'ClassController::updateClass/$1'); 
 
 $routes->post('class/update/(:num)', 'ClassController::saveUpdate/$1'); 
@@ -56,7 +56,6 @@ $routes->get('notifications/read', 'NotificationController::readNotifications');
 $routes->get('class/create', 'ClassController::create');
 
 
-$routes->get('exams/submissions/(:num)', 'ExamController::allExamSubmissions/$1');
 $routes->get('exams/submissions/(:num)', 'Exam::getExamSubmissionsByExam/$1');
 $routes->get('exams/create/(:num)', 'Exam::create/$1');
 $routes->post('exams/create/(:num)', 'Exam::save/$1');

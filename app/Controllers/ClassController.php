@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\ClassModel;
 use App\Models\ExamModel;
 use App\Models\Notification;
+use App\Models\MaterialModel;
 use PhpParser\Node\Expr\FuncCall;
 
 class ClassController extends BaseController
@@ -12,12 +13,14 @@ class ClassController extends BaseController
     protected $ClassModel;
     protected $NotificationModel;
     protected $ExamModel;
+    protected $materialModel;
 
     public function __construct()
     {
         $this->ClassModel = new ClassModel();
         $this->ExamModel = new ExamModel();
         $this->NotificationModel = new Notification();
+        $this->materialModel = new MaterialModel();
     }
 
     public function index()
@@ -95,8 +98,10 @@ class ClassController extends BaseController
     }
     public function detailClass($id){
         $exams = $this->ExamModel->getExamByClass($id);
+        $materials = $this->materialModel->getMaterialsByClassId($id);
         $data = [
             'exams' => $exams,
+            'materials' => $materials,
             'id' => $id
         ];
 
@@ -183,8 +188,10 @@ class ClassController extends BaseController
 
     public function studentClassDetail($id){
         $exams = $this->ExamModel->getExamByClass($id);
+        $materials = $this->materialModel->getMaterialsByClassId($id);
         $data = [
             'exams' => $exams,
+            'materials' => $materials,
             'id' => $id
         ];
 

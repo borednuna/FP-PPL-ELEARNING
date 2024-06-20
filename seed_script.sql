@@ -1,113 +1,118 @@
+CREATE DATABASE elearning;
 
--- Create the `user` table
+USE elearning;
+
 CREATE TABLE `user` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `username` VARCHAR(50) NOT NULL,
-    `password` VARCHAR(255) NOT NULL,
-    `email` VARCHAR(100) NOT NULL,
-    `role` ENUM('admin', 'mentor', 'student') NOT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
--- Create the `notification` table
 CREATE TABLE `notification` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `title` VARCHAR(100) NOT NULL,
-    `content` TEXT NOT NULL,
-    `user_id` INT NOT NULL,
-    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Create the `class` table
 CREATE TABLE `class` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `class_name` VARCHAR(100) NOT NULL,
-    `date_created` DATETIME NOT NULL,
-    `class_description` TEXT NOT NULL,
-    `mentor_id` INT NOT NULL,
-    `quota` INT NOT NULL,
-    FOREIGN KEY (`mentor_id`) REFERENCES `user`(`id`) ON DELETE CASCADE
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `class_name` varchar(255) NOT NULL,
+  `date_created` datetime NOT NULL,
+  `class_description` text NOT NULL,
+  `mentor_id` int(11) NOT NULL,
+  `quota` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`mentor_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Create the `class_user` table (association table for classes and users)
 CREATE TABLE `class_user` (
-    `class_id` INT NOT NULL,
-    `user_id` INT NOT NULL,
-    PRIMARY KEY (`class_id`, `user_id`),
-    FOREIGN KEY (`class_id`) REFERENCES `class`(`id`) ON DELETE CASCADE,
-    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `class_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`class_id`) REFERENCES `class`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Create the `material` table
 CREATE TABLE `material` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `title` VARCHAR(100) NOT NULL,
-    `material_description` TEXT NOT NULL,
-    `class_id` INT NOT NULL,
-    `date_created` DATETIME NOT NULL,
-    `material_content` TEXT NOT NULL,
-    `video_path` VARCHAR(255) NOT NULL,
-    FOREIGN KEY (`class_id`) REFERENCES `class`(`id`) ON DELETE CASCADE
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `material_description` text NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `date_created` datetime NOT NULL,
+  `material_content` text NOT NULL,
+  `video_path` varchar(255),
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`class_id`) REFERENCES `class`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Create the `assignment` table
 CREATE TABLE `assignment` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `name` VARCHAR(100) NOT NULL,
-    `description` TEXT NOT NULL,
-    `material_id` INT NOT NULL,
-    `deadline` DATETIME NOT NULL,
-    FOREIGN KEY (`material_id`) REFERENCES `material`(`id`) ON DELETE CASCADE
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `material_id` int(11) NOT NULL,
+  `deadline` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`material_id`) REFERENCES `material`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Create the `submission` table
 CREATE TABLE `submission` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `assignment_id` INT NOT NULL,
-    `user_id` INT NOT NULL,
-    `uploaded_file` VARCHAR(255) NOT NULL,
-    `date_submitted` DATETIME NOT NULL,
-    FOREIGN KEY (`assignment_id`) REFERENCES `assignment`(`id`) ON DELETE CASCADE,
-    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `assignment_id` int(11),
+  `user_id` int(11),
+  `grade` int(11),
+  `uploaded_file` text NOT NULL,
+  `date_submitted` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`assignment_id`) REFERENCES `assignment`(`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
--- Create the `exam` table
 CREATE TABLE `exam` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `name` VARCHAR(100) NOT NULL,
-    `class_id` INT NOT NULL,
-    `date_created` DATETIME NOT NULL,
-    `start_time` DATETIME NOT NULL,
-    `end_time` DATETIME NOT NULL,
-    FOREIGN KEY (`class_id`) REFERENCES `class`(`id`) ON DELETE CASCADE
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `date_created` datetime NOT NULL,
+  `start_time` datetime NOT NULL,
+  `end_time` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`class_id`) REFERENCES `class`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Create the `question` table
 CREATE TABLE `question` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `question` TEXT NOT NULL,
-    `option_a` VARCHAR(255) NOT NULL,
-    `option_b` VARCHAR(255) NOT NULL,
-    `option_c` VARCHAR(255) NOT NULL,
-    `option_d` VARCHAR(255) NOT NULL,
-    `option_e` VARCHAR(255) NOT NULL,
-    `correct_answer` CHAR(1) NOT NULL,
-    `exam_id` INT NOT NULL,
-    FOREIGN KEY (`exam_id`) REFERENCES `exam`(`id`) ON DELETE CASCADE
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `question` text NOT NULL,
+  `option_a` varchar(255) NOT NULL,
+  `option_b` varchar(255) NOT NULL,
+  `option_c` varchar(255) NOT NULL,
+  `option_d` varchar(255) NOT NULL,
+  `option_e` varchar(255) NOT NULL,
+  `correct_answer` varchar(255) NOT NULL,
+  `exam_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`exam_id`) REFERENCES `exam`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Create the `exam_submission` table
 CREATE TABLE `exam_submission` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `exam_submission_description` TEXT NOT NULL,
-    `date_submitted` DATETIME NOT NULL,
-    `exam_id` INT NOT NULL,
-    `user_id` INT NOT NULL,
-    `correct_answer` INT NOT NULL,
-    `wrong_answer` INT NOT NULL,
-    `score` INT NOT NULL,
-    FOREIGN KEY (`exam_id`) REFERENCES `exam`(`id`) ON DELETE CASCADE,
-    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `exam_submission_description` text NOT NULL,
+  `date_submitted` datetime NOT NULL,
+  `exam_id` int(11),
+  `user_id` int(11),
+  `correct_answer` int(11) NOT NULL,
+  `wrong_answer` int(11) NOT NULL,
+  `score` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`exam_id`) REFERENCES `exam`(`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE SET NULL ON UPDATE CASCADE
 );
+
 
 
 INSERT INTO `user` (`username`, `password`, `email`, `role`) VALUES ('nuna', 'nuna123', 'nunanuna123@gmail.com', 'mentor');

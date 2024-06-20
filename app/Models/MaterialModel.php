@@ -43,6 +43,29 @@ class MaterialModel extends Model
     // Metode untuk mendapatkan data materi berdasarkan ID kelas
     public function getMaterialsByClassId($class_id)
     {
-        return $this->where('class_id', $class_id)->findAll();
+        $query = "SELECT 
+            material.id AS material_id,
+            material.title,
+            material.material_description,
+            material.class_id,
+            material.date_created AS date_created,
+            material.material_content,
+            material.video_path,
+            assignment.id AS assignment_id,
+            assignment.name AS assignment_name,
+            assignment.description AS assignment_description,
+            assignment.material_id,
+            assignment.deadline
+        FROM 
+            material 
+        LEFT JOIN 
+            assignment 
+        ON 
+            material.id = assignment.material_id 
+        WHERE 
+            material.class_id = $class_id;
+        ";
+        
+        return $this->db->query($query)->getResultArray();
     }
 }
